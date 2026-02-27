@@ -1,0 +1,110 @@
+name: Spring Framework APIs
+description: Collection of APIs and resources for the Spring Framework ecosystem
+image: https://spring.io/img/spring-logo.svg
+url: https://spring.io
+created: 2024-01-15 00:00:00+00:00
+modified: 2024-01-15 00:00:00+00:00
+apis:
+- name: Spring Boot
+  description: API for building production-ready Spring applications
+  image: https://spring.io/img/projects/spring-boot.svg
+  humanUrl: https://spring.io/projects/spring-boot
+  baseUrl: https://api.spring.io/boot
+  tags:
+  - framework
+  - microservices
+  - java
+  properties:
+  - type: Documentation
+    url: https://docs.spring.io/spring-boot/docs/current/reference/html/
+  - type: OpenAPI
+    url: https://docs.spring.io/spring-boot/docs/current/actuator-api/openapi.yaml
+  - type: GitHub
+    url: https://github.com/spring-projects/spring-boot
+  - type: Getting Started
+    url: https://spring.io/guides/gs/spring-boot/
+  contact:
+  - type: Support
+    url: https://spring.io/support
+- name: Spring Data REST
+  description: RESTful API exposure for Spring Data repositories
+  humanUrl: https://spring.io/projects/spring-data-rest
+  baseUrl: https://api.spring.io/data/rest
+  tags:
+  - rest
+  - data
+  - crud
+  properties:
+  - type: Documentation
+    url: https://docs.spring.io/spring-data/rest/docs/current/reference/html/
+  - type: API Reference
+    url: https://docs.spring.io/spring-data/rest/docs/current/api/
+  - type: GitHub
+    url: https://github.com/spring-projects/spring-data-rest
+  - type: HAL Browser
+    url: https://docs.spring.io/spring-data/rest/docs/current/reference/html/#tools.hal-explorer
+- name: Spring Cloud Gateway
+  description: API Gateway built on Spring Framework
+  humanUrl: https://spring.io/projects/spring-cloud-gateway
+  baseUrl: https://api.spring.io/gateway
+  tags:
+  - gateway
+  - routing
+  - cloud
+  properties:
+  - type: Documentation
+    url: https://docs.spring.io/spring-cloud-gateway/docs/current/reference/html/
+  - type: GitHub
+    url: https://github.com/spring-cloud/spring-cloud-gateway
+  - type: Samples
+    url: https://github.com/spring-cloud/spring-cloud-gateway/tree/main/spring-cloud-gateway-sample
+- name: Spring Security OAuth
+  description: OAuth2 and OpenID Connect support for Spring applications
+  humanUrl: https://spring.io/projects/spring-security-oauth
+  baseUrl: https://api.spring.io/oauth
+  tags:
+  - security
+  - oauth
+  - authentication
+  properties:
+  - type: Documentation
+    url: https://docs.spring.io/spring-security/reference/servlet/oauth2/index.html
+  - type: GitHub
+    url: https://github.com/spring-projects/spring-security
+  - type: OAuth2 Guide
+    url: https://spring.io/guides/tutorials/spring-boot-oauth2/
+- name: Spring Initializr API
+  description: API for generating Spring Boot projects
+  humanUrl: https://start.spring.io
+  baseUrl: https://start.spring.io/api
+  tags:
+  - generator
+  - bootstrap
+  - tooling
+  properties:
+  - type: API Documentation
+    url: https://docs.spring.io/initializr/docs/current/reference/html/
+  - type: OpenAPI
+    url: https://start.spring.io/v3/api-docs
+  - type: GitHub
+    url: https://github.com/spring-io/initializr
+  - type: Web Interface
+    url: https://start.spring.io
+maintainers:
+- name: Pivotal Software / VMware
+  email: spring-team@vmware.com
+  url: https://spring.io/team
+tags:
+- java
+- framework
+- enterprise
+- microservices
+- rest
+- cloud
+include:
+- name: Spring Guides
+  url: https://spring.io/guides
+- name: Spring Blog
+  url: https://spring.io/blog
+- name: Spring Community
+  url: https://spring.io/community
