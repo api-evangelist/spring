@@ -3,7 +3,7 @@ description: Collection of APIs and resources for the Spring Framework ecosystem
 image: https://spring.io/img/spring-logo.svg
 url: https://spring.io
 created: 2024-01-15 00:00:00+00:00
-modified: 2024-01-15 00:00:00+00:00
+modified: '2026-03-16'
 apis:
 - name: Spring Boot
   description: API for building production-ready Spring applications
