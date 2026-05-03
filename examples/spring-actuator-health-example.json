@@ -1,0 +1,39 @@
+{
+  "title": "Check Application Health",
+  "description": "Example of retrieving the Spring Boot Actuator health status with component details",
+  "request": {
+    "method": "GET",
+    "url": "http://localhost:8080/actuator/health",
+    "headers": {}
+  },
+  "response": {
+    "status": 200,
+    "headers": {
+      "Content-Type": "application/vnd.spring-boot.actuator.v3+json"
+    },
+    "body": {
+      "status": "UP",
+      "components": {
+        "db": {
+          "status": "UP",
+          "details": {
+            "database": "PostgreSQL",
+            "validationQuery": "isValid()"
+          }
+        },
+        "diskSpace": {
+          "status": "UP",
+          "details": {
+            "total": 499963174912,
+            "free": 250981711872,
+            "threshold": 10485760,
+            "path": "/"
+          }
+        },
+        "ping": {
+          "status": "UP"
+        }
+      }
+    }
+  }
+}

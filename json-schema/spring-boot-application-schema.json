@@ -1,0 +1,78 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12",
+  "$id": "https://spring.io/schemas/spring-boot-application",
+  "title": "Spring Boot Application",
+  "description": "JSON Schema for a Spring Boot application descriptor as returned by the Spring Initializr API",
+  "type": "object",
+  "properties": {
+    "type": {
+      "type": "string",
+      "description": "Project build system type",
+      "enum": ["maven-project", "gradle-project", "gradle-project-kotlin"],
+      "default": "maven-project"
+    },
+    "language": {
+      "type": "string",
+      "description": "Programming language for the generated project",
+      "enum": ["java", "kotlin", "groovy"],
+      "default": "java"
+    },
+    "bootVersion": {
+      "type": "string",
+      "description": "Spring Boot version to use",
+      "example": "3.4.5"
+    },
+    "baseDir": {
+      "type": "string",
+      "description": "Base directory name in the generated archive",
+      "example": "demo"
+    },
+    "groupId": {
+      "type": "string",
+      "description": "Maven/Gradle group ID",
+      "example": "com.example"
+    },
+    "artifactId": {
+      "type": "string",
+      "description": "Maven/Gradle artifact ID",
+      "example": "my-application"
+    },
+    "name": {
+      "type": "string",
+      "description": "Project display name",
+      "example": "My Application"
+    },
+    "description": {
+      "type": "string",
+      "description": "Project description",
+      "example": "Demo project for Spring Boot"
+    },
+    "packageName": {
+      "type": "string",
+      "description": "Root Java package name",
+      "example": "com.example.myapplication"
+    },
+    "packaging": {
+      "type": "string",
+      "description": "Packaging type",
+      "enum": ["jar", "war"],
+      "default": "jar"
+    },
+    "javaVersion": {
+      "type": "string",
+      "description": "Java version target",
+      "enum": ["21", "17", "11"],
+      "default": "21"
+    },
+    "dependencies": {
+      "type": "array",
+      "description": "List of Spring Boot starter dependencies",
+      "items": {
+        "type": "string",
+        "description": "Dependency ID (e.g., web, data-jpa, security, actuator)"
+      },
+      "example": ["web", "data-jpa", "security", "actuator", "lombok"]
+    }
+  },
+  "required": ["groupId", "artifactId"]
+}

@@ -1,0 +1,58 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "schema": "https://schema.org/",
+    "spring": "https://spring.io/vocab/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "doap": "http://usefulinc.com/ns/doap#",
+
+    "SpringApplication": "spring:SpringApplication",
+    "SpringBootProject": "spring:SpringBootProject",
+    "SpringDependency": "spring:SpringDependency",
+    "ActuatorEndpoint": "spring:ActuatorEndpoint",
+    "HealthIndicator": "spring:HealthIndicator",
+    "Bean": "spring:Bean",
+    "Metric": "spring:Metric",
+
+    "name": "schema:name",
+    "description": "schema:description",
+    "version": "schema:version",
+    "language": "schema:programmingLanguage",
+    "groupId": "spring:groupId",
+    "artifactId": "spring:artifactId",
+    "packageName": "spring:packageName",
+    "bootVersion": "spring:bootVersion",
+    "packaging": "spring:packaging",
+    "javaVersion": "spring:javaVersion",
+    "type": "spring:projectType",
+    "dependencies": {
+      "@id": "spring:hasDependency",
+      "@container": "@set"
+    },
+    "status": "spring:healthStatus",
+    "components": {
+      "@id": "spring:hasComponent",
+      "@container": "@index"
+    },
+    "details": "spring:healthDetails",
+    "metricName": "spring:metricName",
+    "measurements": {
+      "@id": "spring:hasMeasurement",
+      "@container": "@list"
+    },
+    "statistic": "spring:statisticType",
+    "value": "schema:value",
+    "tags": {
+      "@id": "schema:keywords",
+      "@container": "@set"
+    },
+    "url": {
+      "@id": "schema:url",
+      "@type": "@id"
+    },
+    "license": {
+      "@id": "doap:license",
+      "@type": "@id"
+    }
+  }
+}

@@ -1,0 +1,614 @@
+openapi: 3.1.0
+info:
+  title: Spring Boot Actuator API
+  description: >-
+    The Spring Boot Actuator API provides production-ready endpoints for monitoring
+    and managing Spring Boot applications. It exposes health checks, metrics,
+    environment information, configuration properties, thread dumps, HTTP traces,
+    application info, and shutdown capabilities via RESTful endpoints. The Actuator
+    supports customizable security, endpoint exposure controls, and integration with
+    monitoring systems like Prometheus, Datadog, and CloudWatch. Used by operators
+    and SREs to observe and manage deployed Spring Boot services.
+  version: '3.x'
+  contact:
+    name: Spring Team
+    url: https://spring.io/support
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0
+externalDocs:
+  description: Spring Boot Actuator Reference Documentation
+  url: https://docs.spring.io/spring-boot/docs/current/reference/html/actuator.html
+servers:
+  - url: http://localhost:8080/actuator
+    description: Default Local Spring Boot Actuator Endpoint
+tags:
+  - name: Health
+    description: Application health status and component health details
+  - name: Metrics
+    description: Application performance and operational metrics
+  - name: Info
+    description: Application information and build metadata
+  - name: Environment
+    description: Environment properties and configuration
+  - name: Beans
+    description: Spring application context beans
+  - name: Mappings
+    description: HTTP request handler mappings
+  - name: Loggers
+    description: Application logger configuration
+  - name: Threads
+    description: Thread dump and virtual thread information
+security:
+  - basicAuth: []
+paths:
+  /health:
+    get:
+      operationId: getHealth
+      summary: Get Health Status
+      description: >-
+        Returns the health status of the application and all registered health
+        indicators (database, disk space, Redis, Kafka, etc.). The response
+        detail level is controlled by the management.endpoint.health.show-details
+        configuration property.
+      tags:
+        - Health
+      responses:
+        '200':
+          description: Application is healthy
+          content:
+            application/vnd.spring-boot.actuator.v3+json:
+              schema:
+                $ref: '#/components/schemas/HealthResponse'
+        '503':
+          description: Application is unhealthy or out of service
+          content:
+            application/vnd.spring-boot.actuator.v3+json:
+              schema:
+                $ref: '#/components/schemas/HealthResponse'
+  /health/{component}:
+    get:
+      operationId: getComponentHealth
+      summary: Get Component Health Status
+      description: Returns health details for a specific health indicator component.
+      tags:
+        - Health
+      parameters:
+        - name: component
+          in: path
+          required: true
+          description: Health indicator component name (e.g., db, diskSpace, redis)
+          schema:
+            type: string
+          example: db
+      responses:
+        '200':
+          description: Component health details
+          content:
+            application/vnd.spring-boot.actuator.v3+json:
+              schema:
+                $ref: '#/components/schemas/ComponentHealthResponse'
+  /metrics:
+    get:
+      operationId: listMetrics
+      summary: List Available Metrics
+      description: Returns a list of all available metric names registered in the application.
+      tags:
+        - Metrics
+      responses:
+        '200':
+          description: List of available metric names
+          content:
+            application/vnd.spring-boot.actuator.v3+json:
+              schema:
+                $ref: '#/components/schemas/MetricNamesResponse'
+  /metrics/{requiredMetricName}:
+    get:
+      operationId: getMetric
+      summary: Get Metric Value
+      description: >-
+        Returns the current value(s) for a specific metric. Metrics are identified
+        by their dot-notation name (e.g., jvm.memory.used, http.server.requests).
+        Results can be filtered by tag using the tag query parameter.
+      tags:
+        - Metrics
+      parameters:
+        - name: requiredMetricName
+          in: path
+          required: true
+          description: Metric name in dot notation
+          schema:
+            type: string
+          example: jvm.memory.used
+        - name: tag
+          in: query
+          required: false
+          description: >-
+            Tag filter in KEY:VALUE format (can be repeated for multiple tags).
+            Example: area:heap or area:heap&tag=id:G1+Eden+Space
+          schema:
+            type: string
+          example: 'area:heap'
+      responses:
+        '200':
+          description: Metric value and measurements
+          content:
+            application/vnd.spring-boot.actuator.v3+json:
+              schema:
+                $ref: '#/components/schemas/MetricResponse'
+  /info:
+    get:
+      operationId: getInfo
+      summary: Get Application Info
+      description: >-
+        Returns application information including build details, Git commit info,
+        Java runtime version, and any custom info contributors registered in
+        the application context.
+      tags:
+        - Info
+      responses:
+        '200':
+          description: Application information
+          content:
+            application/vnd.spring-boot.actuator.v3+json:
+              schema:
+                $ref: '#/components/schemas/InfoResponse'
+  /env:
+    get:
+      operationId: getEnvironment
+      summary: Get Environment Properties
+      description: >-
+        Returns a snapshot of the application's environment including all
+        property sources (application.properties, system environment, JVM system
+        properties, etc.). Sensitive values are masked.
+      tags:
+        - Environment
+      responses:
+        '200':
+          description: Environment properties
+          content:
+            application/vnd.spring-boot.actuator.v3+json:
+              schema:
+                $ref: '#/components/schemas/EnvironmentResponse'
+  /env/{toMatch}:
+    get:
+      operationId: getEnvironmentProperty
+      summary: Get Environment Property
+      description: Returns a specific environment property value by key.
+      tags:
+        - Environment
+      parameters:
+        - name: toMatch
+          in: path
+          required: true
+          description: Property key to look up
+          schema:
+            type: string
+          example: spring.application.name
+      responses:
+        '200':
+          description: Property value from environment
+          content:
+            application/vnd.spring-boot.actuator.v3+json:
+              schema:
+                $ref: '#/components/schemas/EnvironmentPropertyResponse'
+  /loggers:
+    get:
+      operationId: listLoggers
+      summary: List Loggers
+      description: Returns the configured log levels for all loggers in the application.
+      tags:
+        - Loggers
+      responses:
+        '200':
+          description: Logger configurations
+          content:
+            application/vnd.spring-boot.actuator.v3+json:
+              schema:
+                $ref: '#/components/schemas/LoggersResponse'
+  /loggers/{name}:
+    get:
+      operationId: getLogger
+      summary: Get Logger Configuration
+      description: Returns the configured and effective log level for a specific logger.
+      tags:
+        - Loggers
+      parameters:
+        - name: name
+          in: path
+          required: true
+          description: Logger name (e.g., com.example.MyService, ROOT)
+          schema:
+            type: string
+          example: com.example.app
+      responses:
+        '200':
+          description: Logger configuration
+          content:
+            application/vnd.spring-boot.actuator.v3+json:
+              schema:
+                $ref: '#/components/schemas/LoggerResponse'
+    post:
+      operationId: setLoggerLevel
+      summary: Set Logger Level
+      description: >-
+        Changes the log level for a specific logger at runtime without restarting
+        the application.
+      tags:
+        - Loggers
+      parameters:
+        - name: name
+          in: path
+          required: true
+          description: Logger name
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LoggerLevelRequest'
+      responses:
+        '204':
+          description: Logger level updated
+  /mappings:
+    get:
+      operationId: getMappings
+      summary: Get Request Mappings
+      description: >-
+        Returns all @RequestMapping paths, handler methods, and filters registered
+        in the Spring application context. Useful for API discovery and debugging.
+      tags:
+        - Mappings
+      responses:
+        '200':
+          description: HTTP request mappings
+          content:
+            application/vnd.spring-boot.actuator.v3+json:
+              schema:
+                $ref: '#/components/schemas/MappingsResponse'
+  /threaddump:
+    get:
+      operationId: getThreadDump
+      summary: Get Thread Dump
+      description: >-
+        Returns a snapshot of all threads running in the JVM, including their
+        state, stack traces, and lock information. Useful for diagnosing deadlocks
+        or performance issues.
+      tags:
+        - Threads
+      responses:
+        '200':
+          description: JVM thread dump
+          content:
+            application/vnd.spring-boot.actuator.v3+json:
+              schema:
+                $ref: '#/components/schemas/ThreadDumpResponse'
+  /beans:
+    get:
+      operationId: getBeans
+      summary: Get Application Beans
+      description: >-
+        Returns a complete list of Spring beans instantiated in the application
+        context, along with their type, scope, and dependencies.
+      tags:
+        - Beans
+      responses:
+        '200':
+          description: Spring application context beans
+          content:
+            application/vnd.spring-boot.actuator.v3+json:
+              schema:
+                $ref: '#/components/schemas/BeansResponse'
+components:
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+  schemas:
+    HealthResponse:
+      type: object
+      description: Application health status response
+      properties:
+        status:
+          type: string
+          description: Overall health status
+          enum:
+            - UP
+            - DOWN
+            - OUT_OF_SERVICE
+            - UNKNOWN
+          example: UP
+        components:
+          type: object
+          description: Health details per registered health indicator
+          additionalProperties:
+            $ref: '#/components/schemas/ComponentHealthResponse'
+    ComponentHealthResponse:
+      type: object
+      description: Health status for a single health indicator component
+      properties:
+        status:
+          type: string
+          enum:
+            - UP
+            - DOWN
+            - OUT_OF_SERVICE
+            - UNKNOWN
+          example: UP
+        details:
+          type: object
+          description: Component-specific health details
+          additionalProperties: true
+    MetricNamesResponse:
+      type: object
+      properties:
+        names:
+          type: array
+          description: Available metric names
+          items:
+            type: string
+          example:
+            - jvm.memory.used
+            - jvm.memory.max
+            - http.server.requests
+            - process.cpu.usage
+    MetricResponse:
+      type: object
+      description: Metric value response
+      properties:
+        name:
+          type: string
+          description: Metric name
+          example: jvm.memory.used
+        description:
+          type: string
+          description: Human-readable metric description
+        baseUnit:
+          type: string
+          description: Metric base unit
+          example: bytes
+        measurements:
+          type: array
+          description: Metric measurement values
+          items:
+            type: object
+            properties:
+              statistic:
+                type: string
+                example: VALUE
+              value:
+                type: number
+                example: 123456789
+        availableTags:
+          type: array
+          description: Available tags for filtering
+          items:
+            type: object
+            properties:
+              tag:
+                type: string
+              values:
+                type: array
+                items:
+                  type: string
+    InfoResponse:
+      type: object
+      description: Application information
+      properties:
+        build:
+          type: object
+          properties:
+            artifact:
+              type: string
+              example: my-app
+            group:
+              type: string
+              example: com.example
+            version:
+              type: string
+              example: 1.0.0
+            time:
+              type: string
+              format: date-time
+        git:
+          type: object
+          properties:
+            branch:
+              type: string
+              example: main
+            commit:
+              type: object
+              properties:
+                id:
+                  type: string
+                time:
+                  type: string
+        java:
+          type: object
+          properties:
+            version:
+              type: string
+              example: '21'
+            vendor:
+              type: object
+    EnvironmentResponse:
+      type: object
+      description: Application environment snapshot
+      properties:
+        activeProfiles:
+          type: array
+          items:
+            type: string
+          example:
+            - production
+        propertySources:
+          type: array
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+              properties:
+                type: object
+                additionalProperties: true
+    EnvironmentPropertyResponse:
+      type: object
+      description: Single environment property
+      properties:
+        property:
+          type: object
+          properties:
+            source:
+              type: string
+            value:
+              type: string
+        activeContexts:
+          type: array
+          items:
+            type: string
+    LoggersResponse:
+      type: object
+      properties:
+        levels:
+          type: array
+          items:
+            type: string
+          example:
+            - TRACE
+            - DEBUG
+            - INFO
+            - WARN
+            - ERROR
+        loggers:
+          type: object
+          additionalProperties:
+            $ref: '#/components/schemas/LoggerResponse'
+    LoggerResponse:
+      type: object
+      description: Logger configuration
+      properties:
+        configuredLevel:
+          type: string
+          nullable: true
+          enum:
+            - TRACE
+            - DEBUG
+            - INFO
+            - WARN
+            - ERROR
+            - 'OFF'
+            - null
+          example: INFO
+        effectiveLevel:
+          type: string
+          enum:
+            - TRACE
+            - DEBUG
+            - INFO
+            - WARN
+            - ERROR
+          example: INFO
+    LoggerLevelRequest:
+      type: object
+      properties:
+        configuredLevel:
+          type: string
+          nullable: true
+          enum:
+            - TRACE
+            - DEBUG
+            - INFO
+            - WARN
+            - ERROR
+            - 'OFF'
+            - null
+      required:
+        - configuredLevel
+    MappingsResponse:
+      type: object
+      properties:
+        contexts:
+          type: object
+          additionalProperties:
+            type: object
+            properties:
+              mappings:
+                type: object
+    ThreadDumpResponse:
+      type: object
+      properties:
+        threads:
+          type: array
+          items:
+            type: object
+            properties:
+              threadName:
+                type: string
+              threadId:
+                type: integer
+              blockedTime:
+                type: integer
+              blockedCount:
+                type: integer
+              waitedTime:
+                type: integer
+              waitedCount:
+                type: integer
+              lockName:
+                type: string
+                nullable: true
+              lockOwnerId:
+                type: integer
+              lockOwnerName:
+                type: string
+                nullable: true
+              daemon:
+                type: boolean
+              inNative:
+                type: boolean
+              suspended:
+                type: boolean
+              threadState:
+                type: string
+                enum:
+                  - NEW
+                  - RUNNABLE
+                  - BLOCKED
+                  - WAITING
+                  - TIMED_WAITING
+                  - TERMINATED
+              priority:
+                type: integer
+              stackTrace:
+                type: array
+                items:
+                  type: object
+    BeansResponse:
+      type: object
+      properties:
+        contexts:
+          type: object
+          additionalProperties:
+            type: object
+            properties:
+              beans:
+                type: object
+                additionalProperties:
+                  type: object
+                  properties:
+                    aliases:
+                      type: array
+                      items:
+                        type: string
+                    scope:
+                      type: string
+                    type:
+                      type: string
+                    resource:
+                      type: string
+                    dependencies:
+                      type: array
+                      items:
+                        type: string

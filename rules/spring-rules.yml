@@ -1,0 +1,123 @@
+extends: spectral:oas
+rules:
+  # Spring APIs use the actuator content type for HAL responses
+  spring-actuator-content-type:
+    description: Spring Boot Actuator endpoints should support the vendor media type
+    message: >-
+      Actuator endpoints should support application/vnd.spring-boot.actuator.v3+json
+    severity: info
+    given: $.paths['/health'][get].responses['200'].content
+    then:
+      field: 'application/vnd.spring-boot.actuator.v3+json'
+      function: defined
+
+  # All operations require operationId
+  spring-operation-id-required:
+    description: All operations must have an operationId
+    message: Operation is missing operationId
+    severity: error
+    given: $.paths[*][*]
+    then:
+      field: operationId
+      function: defined
+
+  # Operation IDs should follow camelCase
+  spring-operation-id-camel-case:
+    description: Operation IDs should use camelCase
+    message: 'Operation ID "{{value}}" should use camelCase'
+    severity: warn
+    given: $.paths[*][*].operationId
+    then:
+      function: pattern
+      functionOptions:
+        match: '^[a-z][a-zA-Z0-9]*$'
+
+  # All operations must have summaries
+  spring-operation-summary-required:
+    description: All operations must have a summary
+    message: Operation is missing a summary
+    severity: warn
+    given: $.paths[*][*]
+    then:
+      field: summary
+      function: defined
+
+  # Summaries should use Title Case (Spring style)
+  spring-operation-summary-title-case:
+    description: Operation summaries should use Title Case
+    message: 'Summary "{{value}}" should use Title Case'
+    severity: warn
+    given: $.paths[*][*].summary
+    then:
+      function: pattern
+      functionOptions:
+        match: '^[A-Z][a-zA-Z0-9]*(\s[A-Z][a-zA-Z0-9]*)*$'
+
+  # Operations should have descriptions
+  spring-operation-description-required:
+    description: All operations should have a description
+    message: Operation is missing description
+    severity: warn
+    given: $.paths[*][*]
+    then:
+      field: description
+      function: defined
+
+  # All operations should have tags
+  spring-operation-tags-required:
+    description: All operations should have tags
+    message: Operation is missing tags
+    severity: warn
+    given: $.paths[*][*]
+    then:
+      field: tags
+      function: defined
+
+  # Tags must use Title Case
+  spring-tags-title-case:
+    description: All tags must use Title Case
+    message: 'Tag "{{value}}" should use Title Case'
+    severity: warn
+    given: $.tags[*].name
+    then:
+      function: pattern
+      functionOptions:
+        match: '^[A-Z][a-zA-Z0-9]*(\s[A-Z][a-zA-Z0-9]*)*$'
+
+  # Spring APIs should define security schemes
+  spring-security-scheme-defined:
+    description: Spring APIs should define security schemes when authentication is used
+    message: No security schemes defined in components
+    severity: warn
+    given: $.components
+    then:
+      field: securitySchemes
+      function: defined
+
+  # Responses must define at least one success response
+  spring-success-response-required:
+    description: Operations must define at least one 2xx response
+    message: Operation has no 2xx success response defined
+    severity: error
+    given: $.paths[*][*].responses
+    then:
+      function: schema
+      functionOptions:
+        schema:
+          anyOf:
+            - required:
+                - '200'
+            - required:
+                - '201'
+            - required:
+                - '204'
+
+  # Path parameters must be described
+  spring-path-param-described:
+    description: Path parameters should have descriptions
+    message: Path parameter "{{value}}" is missing a description
+    severity: warn
+    given: $.paths[*][*].parameters[?(@.in == 'path')]
+    then:
+      field: description
+      function: defined

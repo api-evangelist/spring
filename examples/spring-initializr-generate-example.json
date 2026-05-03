@@ -1,0 +1,19 @@
+{
+  "title": "Generate Spring Boot Project",
+  "description": "Example of generating a Spring Boot REST API project with web, JPA, security, and actuator starters",
+  "request": {
+    "method": "GET",
+    "url": "https://start.spring.io/starter.zip?type=maven-project&language=java&bootVersion=3.4.5&groupId=com.example&artifactId=my-api&name=my-api&description=My+REST+API&packageName=com.example.myapi&packaging=jar&javaVersion=21&dependencies=web,data-jpa,security,actuator,lombok",
+    "headers": {
+      "Accept": "application/zip"
+    }
+  },
+  "response": {
+    "status": 200,
+    "headers": {
+      "Content-Type": "application/zip",
+      "Content-Disposition": "attachment; filename=\"my-api.zip\""
+    },
+    "body": "(binary ZIP archive containing the generated Spring Boot project)"
+  }
+}

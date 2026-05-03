@@ -1,0 +1,80 @@
+{
+  "name": "Spring Boot Application Descriptor",
+  "description": "Structure of a Spring Boot project descriptor as used by Spring Initializr",
+  "fields": [
+    {
+      "name": "type",
+      "type": "string",
+      "required": false,
+      "description": "Build system: maven-project, gradle-project, or gradle-project-kotlin",
+      "default": "maven-project"
+    },
+    {
+      "name": "language",
+      "type": "string",
+      "required": false,
+      "description": "Programming language: java, kotlin, or groovy",
+      "default": "java"
+    },
+    {
+      "name": "bootVersion",
+      "type": "string",
+      "required": false,
+      "description": "Spring Boot version (e.g., 3.4.5)"
+    },
+    {
+      "name": "groupId",
+      "type": "string",
+      "required": true,
+      "description": "Maven group ID for the project (e.g., com.example)"
+    },
+    {
+      "name": "artifactId",
+      "type": "string",
+      "required": true,
+      "description": "Maven artifact ID / project name (e.g., my-application)"
+    },
+    {
+      "name": "name",
+      "type": "string",
+      "required": false,
+      "description": "Human-readable project name"
+    },
+    {
+      "name": "description",
+      "type": "string",
+      "required": false,
+      "description": "Brief description of the project purpose"
+    },
+    {
+      "name": "packageName",
+      "type": "string",
+      "required": false,
+      "description": "Root Java package name (e.g., com.example.myapp)"
+    },
+    {
+      "name": "packaging",
+      "type": "string",
+      "required": false,
+      "description": "Archive packaging type: jar or war",
+      "default": "jar"
+    },
+    {
+      "name": "javaVersion",
+      "type": "string",
+      "required": false,
+      "description": "Target Java version: 21, 17, or 11",
+      "default": "21"
+    },
+    {
+      "name": "dependencies",
+      "type": "array",
+      "required": false,
+      "description": "List of Spring Boot starter dependency IDs to include",
+      "items": {
+        "type": "string",
+        "description": "Starter dependency ID (e.g., web, data-jpa, security, actuator)"
+      }
+    }
+  ]
+}

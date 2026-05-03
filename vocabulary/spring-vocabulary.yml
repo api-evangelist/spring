@@ -1,0 +1,144 @@
+name: Spring Framework Vocabulary
+description: >-
+  Domain vocabulary for the Spring Framework ecosystem covering core concepts,
+  Spring Boot, Spring Data, Spring Security, Spring Cloud, and Spring AI.
+version: '1.0'
+created: '2026-05-02'
+modified: '2026-05-02'
+url: https://spring.io
+terms:
+  - term: Spring Boot
+    definition: >-
+      An opinionated module for building production-ready Spring applications
+      with auto-configuration, embedded servers, and starter dependencies that
+      minimize boilerplate configuration.
+    tags:
+      - Core
+      - Framework
+  - term: Spring Initializr
+    definition: >-
+      A web service and API at start.spring.io that generates Spring Boot
+      project scaffolding with configurable dependencies, build system, and
+      language support. Used by IDEs and CLI tools.
+    tags:
+      - Tooling
+      - Developer Tools
+  - term: Actuator
+    definition: >-
+      A Spring Boot module that provides production-ready management endpoints
+      for monitoring health, metrics, environment, loggers, thread dumps,
+      beans, and HTTP request mappings.
+    tags:
+      - Monitoring
+      - Operations
+  - term: Spring Data REST
+    definition: >-
+      A Spring Data module that automatically exports repository interfaces
+      as HATEOAS/HAL REST endpoints without writing controller code.
+    tags:
+      - Data
+      - REST
+      - Hypermedia
+  - term: Spring Security
+    definition: >-
+      The de facto standard security framework for Spring applications,
+      providing authentication, authorization, CSRF protection, OAuth2,
+      and OpenID Connect integration.
+    tags:
+      - Security
+      - Authentication
+  - term: Spring Cloud Gateway
+    definition: >-
+      A reactive API gateway built on Spring WebFlux that provides routing,
+      filtering, load balancing, circuit breaking, and rate limiting capabilities.
+    tags:
+      - API Gateway
+      - Cloud
+      - Routing
+  - term: Spring AI
+    definition: >-
+      A Spring framework for building AI-powered applications with a unified
+      ChatClient API supporting multiple LLM providers (OpenAI, Anthropic,
+      Gemini, Ollama) with prompt templates and vector store integration.
+    tags:
+      - AI
+      - LLM
+      - GenAI
+  - term: Starter
+    definition: >-
+      A curated set of dependency descriptors packaged for a specific purpose
+      (e.g., spring-boot-starter-web). Starters simplify build configuration
+      by pulling in all necessary transitive dependencies.
+    tags:
+      - Dependency Management
+      - Build
+  - term: Auto-Configuration
+    definition: >-
+      Spring Boot's mechanism for automatically configuring Spring beans
+      based on classpath contents and property settings, reducing the need
+      for explicit Java or XML configuration.
+    tags:
+      - Configuration
+      - Spring Boot
+  - term: Bean
+    definition: >-
+      A Spring-managed object registered in the application context (IoC container).
+      Beans are instantiated, assembled, and managed by the Spring container.
+    tags:
+      - Core
+      - IoC
+  - term: ApplicationContext
+    definition: >-
+      The central interface to the Spring IoC container, providing configuration
+      information, bean definitions, and lifecycle management for the application.
+    tags:
+      - Core
+      - IoC
+  - term: HATEOAS
+    definition: >-
+      Hypermedia as the Engine of Application State — a REST constraint where
+      API responses include links to related resources and actions. Used by
+      Spring Data REST via the HAL media type.
+    tags:
+      - REST
+      - Hypermedia
+      - API Design
+  - term: Spring MVC
+    definition: >-
+      The model-view-controller web framework in Spring for building servlet-based
+      REST APIs and web applications using @Controller and @RestController annotations.
+    tags:
+      - Web
+      - REST
+      - MVC
+  - term: WebFlux
+    definition: >-
+      The reactive web framework in Spring for building non-blocking REST APIs
+      and streaming applications using Project Reactor and Netty.
+    tags:
+      - Reactive
+      - Web
+      - Non-Blocking
+  - term: Spring Authorization Server
+    definition: >-
+      An official Spring project implementing the OAuth 2.1 and OpenID Connect 1.0
+      authorization server specification for issuing and managing access tokens.
+    tags:
+      - OAuth2
+      - Security
+      - Authorization
+  - term: Profile
+    definition: >-
+      A named configuration set (e.g., dev, prod, test) that activates specific
+      beans and properties. Enabled via spring.profiles.active property or
+      environment variable.
+    tags:
+      - Configuration
+      - Spring Boot
+  - term: Spring Boot DevTools
+    definition: >-
+      Development-time tools providing automatic restart on class changes,
+      LiveReload integration, and property overrides for developer productivity.
+    tags:
+      - Developer Tools
+      - Development
