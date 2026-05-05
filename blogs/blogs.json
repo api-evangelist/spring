@@ -1,0 +1,13 @@
+{
+  "repo": "spring",
+  "feeds": [
+    {
+      "source": "https://spring.io/blog",
+      "feed_url": "https://spring.io/blog.atom",
+      "saved": 4,
+      "title": "Spring"
+    }
+  ],
+  "post_count": 4,
+  "fetched": "2026-05-03T23:37:01Z"
+}
