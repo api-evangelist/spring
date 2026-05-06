@@ -4,7 +4,8 @@ schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main
 provider: Spring Framework
 providerId: spring
 created: '2026-05-04'
-modified: '2026-05-04'
+modified: '2026-05-05'
+reconciled: false
 tags:
   - AI
   - Cloud Native
@@ -13,149 +14,65 @@ tags:
   - Java
   - Microservices
   - Open Source
-  - REST
-  - Spring Boot
-description: Machine-readable plans and pricing scaffold for this API provider. Conforms to the API Commons
-  Plans schema. Tier limits and prices are scaffold defaults; replace with provider-published values.
+description: The Spring Framework itself is open-source software (Apache 2.0)
+  with no per-call or subscription pricing. Commercial offerings around Spring —
+  notably Tanzu Spring Runtime / Spring Enterprise from Broadcom — are sold on
+  custom terms (typically per-application or per-VM support subscriptions) with
+  pricing disclosed only via direct sales engagement.
+sources:
+  - https://spring.io/
+  - https://spring.io/projects
+  - https://enterprise.spring.io/
+  - https://go-vmware.broadcom.com/contact-us
+notes: Open-source framework; the only commercial layer (Tanzu Spring / Spring
+  Enterprise) is contact-sales with no published pricing tiers.
 plans:
-  - id: spring-free
-    name: Free
+  - id: spring-open-source
+    name: Open Source
     type: freemium
-    description: Free entry tier for the Spring Framework API surface. Intended for evaluation, prototyping,
-      and low-volume integrations. Real limits and pricing must be reconciled with the provider's published
-      plan documentation.
+    description: Spring Framework and the broader Spring ecosystem (Boot, Cloud,
+      Data, Security, etc.) are released under Apache License 2.0. Free for any
+      use; community support via the public issue trackers and Stack Overflow.
     entries:
-      - label: API Requests
-        description: Monthly API request quota across all included endpoints
-        name: api_requests
-        type: quota
-        metric: requests
-        limit: 1000
-        timeFrame: month
+      - label: Open Source License
+        name: open_source
+        type: flat
+        metric: license
+        limit: -1
+        timeFrame: usage
         geo: global
-        domains: []
         unit: 1
-        price: '0.00'
-        userMultiplied: false
-      - label: Rate Limit
-        description: Maximum requests per minute on the free tier
-        name: rate_limit
-        type: rate
-        metric: requests_per_minute
-        limit: 10
-        timeFrame: minute
-        geo: global
-        domains: []
-        unit: 1
-        price: '0.00'
+        price: $0 (Apache 2.0)
         userMultiplied: false
     elements:
-      - name: Public Documentation
+      - name: Apache 2.0 License
       - name: Community Support
-      - name: Sandbox Access
-      - name: Spring Boot Actuator API
-      - name: Spring Initializr API
-      - name: Spring Data REST API
-      - name: Spring Cloud Gateway API
-      - name: Spring Authorization Server API
-      - name: Spring AI API
-  - id: spring-pro
-    name: Professional
-    type: paid
-    description: Production tier for Spring Framework. Provides higher quotas, priority support, and access
-      to the broader API portfolio. Pricing placeholder; align with the provider's pricing page.
-    entries:
-      - label: API Requests
-        description: Monthly API request quota
-        name: api_requests
-        type: quota
-        metric: requests
-        limit: 100000
-        timeFrame: month
-        geo: global
-        domains: []
-        unit: 1
-        price: TBD
-        userMultiplied: false
-      - label: Rate Limit
-        description: Maximum requests per minute on the professional tier
-        name: rate_limit
-        type: rate
-        metric: requests_per_minute
-        limit: 100
-        timeFrame: minute
-        geo: global
-        domains: []
-        unit: 1
-        price: '0.00'
-        userMultiplied: false
-      - label: Overage
-        description: Per-request price after monthly quota is exceeded
-        name: overage
-        type: metered
-        metric: requests
-        limit: -1
-        timeFrame: month
-        geo: global
-        domains: []
-        unit: 1000
-        price: TBD
-        userMultiplied: false
-    elements:
-      - name: All Production Endpoints
-      - name: Email Support
-      - name: SLA Targets
-      - name: Webhook Subscriptions
-      - name: Spring Boot Actuator API
-      - name: Spring Initializr API
-      - name: Spring Data REST API
-      - name: Spring Cloud Gateway API
-      - name: Spring Authorization Server API
-      - name: Spring AI API
-  - id: spring-enterprise
-    name: Enterprise
+      - name: Public Documentation
+      - name: All Spring Projects
+  - id: spring-tanzu-enterprise
+    name: Tanzu Spring (Enterprise Support)
     type: enterprise
-    description: Custom-negotiated tier for Spring Framework. Includes dedicated capacity, contractual
-      SLAs, security review, data residency options, and named technical account management.
+    description: Commercial support and enterprise extensions for Spring sold by
+      Broadcom under the Tanzu Spring brand. Includes 24x7 support across 50+
+      Spring projects and extended OSS support windows. Pricing is contact-sales.
     entries:
-      - label: API Requests
-        description: Negotiated request volume; -1 indicates uncapped subject to fair use
-        name: api_requests
-        type: quota
-        metric: requests
+      - label: Custom Support Subscription
+        name: support_subscription
+        type: subscription
+        metric: varies
         limit: -1
-        timeFrame: month
-        geo: configurable
-        domains: []
+        timeFrame: year
+        geo: global
         unit: 1
-        price: custom
-        userMultiplied: false
-      - label: Rate Limit
-        description: Negotiated burst and steady-state rate
-        name: rate_limit
-        type: rate
-        metric: requests_per_minute
-        limit: 1000
-        timeFrame: minute
-        geo: configurable
-        domains: []
-        unit: 1
-        price: custom
+        price: contact sales
         userMultiplied: false
     elements:
-      - name: Unlimited / Negotiated Volume
-      - name: 24/7 Dedicated Support
-      - name: Contractual SLA
-      - name: Security & Compliance Review
-      - name: Dedicated Account Manager
-      - name: Custom Data Residency
-      - name: Spring Boot Actuator API
-      - name: Spring Initializr API
-      - name: Spring Data REST API
-      - name: Spring Cloud Gateway API
-      - name: Spring Authorization Server API
-      - name: Spring AI API
+      - name: 24x7 Production Support
+      - name: 50+ Spring Projects Covered
+      - name: Extended OSS Support Window
+      - name: Security Advisories
+      - name: Spring Runtime
 maintainers:
-  - name: Spring Team at VMware
+  - name: VMware Tanzu (Broadcom)
     email: spring-team@vmware.com
     url: https://spring.io/team
