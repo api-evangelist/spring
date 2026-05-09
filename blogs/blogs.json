@@ -3,11 +3,12 @@
   "feeds": [
     {
       "source": "https://spring.io/blog",
-      "feed_url": "https://spring.io/blog.atom",
-      "saved": 4,
-      "title": "Spring"
+      "feed_url": "",
+      "title": "",
+      "saved": 0,
+      "error": "no_feed"
     }
   ],
   "post_count": 4,
-  "fetched": "2026-05-03T23:37:01Z"
+  "fetched": "2026-05-09T20:17:51Z"
 }
