@@ -1,0 +1,71 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Spring Boot Actuator API — Threads
+  description: 'Spring Boot Actuator API — Threads. 1 operations. Lead operation: Get Thread Dump. Self-contained Naftiko
+    capability covering one Spring business surface.'
+  tags:
+  - Spring
+  - Threads
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    SPRING_API_KEY: SPRING_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: boot-actuator-threads
+    baseUri: http://localhost:8080/actuator
+    description: Spring Boot Actuator API — Threads business capability. Self-contained, no shared references.
+    resources:
+    - name: threaddump
+      path: /threaddump
+      operations:
+      - name: getthreaddump
+        method: GET
+        description: Get Thread Dump
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: basic
+      username: '{{env.SPRING_USER}}'
+      password: '{{env.SPRING_PASS}}'
+  exposes:
+  - type: rest
+    namespace: boot-actuator-threads-rest
+    port: 8080
+    description: REST adapter for Spring Boot Actuator API — Threads. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/threaddump
+      name: threaddump
+      description: REST surface for threaddump.
+      operations:
+      - method: GET
+        name: getthreaddump
+        description: Get Thread Dump
+        call: boot-actuator-threads.getthreaddump
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: boot-actuator-threads-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Spring Boot Actuator API — Threads. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: get-thread-dump
+      description: Get Thread Dump
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: boot-actuator-threads.getthreaddump
+      outputParameters:
+      - type: object
+        mapping: $.

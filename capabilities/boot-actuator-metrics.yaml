@@ -1,0 +1,119 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Spring Boot Actuator API — Metrics
+  description: 'Spring Boot Actuator API — Metrics. 2 operations. Lead operation: List Available Metrics. Self-contained Naftiko
+    capability covering one Spring business surface.'
+  tags:
+  - Spring
+  - Metrics
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    SPRING_API_KEY: SPRING_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: boot-actuator-metrics
+    baseUri: http://localhost:8080/actuator
+    description: Spring Boot Actuator API — Metrics business capability. Self-contained, no shared references.
+    resources:
+    - name: metrics
+      path: /metrics
+      operations:
+      - name: listmetrics
+        method: GET
+        description: List Available Metrics
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: metrics-requiredMetricName
+      path: /metrics/{requiredMetricName}
+      operations:
+      - name: getmetric
+        method: GET
+        description: Get Metric Value
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: requiredMetricName
+          in: path
+          type: string
+          description: Metric name in dot notation
+          required: true
+        - name: tag
+          in: query
+          type: string
+          description: 'Tag filter in KEY:VALUE format (can be repeated for multiple tags). Example: area:heap or area:heap&tag=id:G1+Eden+Space'
+    authentication:
+      type: basic
+      username: '{{env.SPRING_USER}}'
+      password: '{{env.SPRING_PASS}}'
+  exposes:
+  - type: rest
+    namespace: boot-actuator-metrics-rest
+    port: 8080
+    description: REST adapter for Spring Boot Actuator API — Metrics. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/metrics
+      name: metrics
+      description: REST surface for metrics.
+      operations:
+      - method: GET
+        name: listmetrics
+        description: List Available Metrics
+        call: boot-actuator-metrics.listmetrics
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/metrics/{requiredmetricname}
+      name: metrics-requiredmetricname
+      description: REST surface for metrics-requiredMetricName.
+      operations:
+      - method: GET
+        name: getmetric
+        description: Get Metric Value
+        call: boot-actuator-metrics.getmetric
+        with:
+          requiredMetricName: rest.requiredMetricName
+          tag: rest.tag
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: boot-actuator-metrics-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Spring Boot Actuator API — Metrics. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: list-available-metrics
+      description: List Available Metrics
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: boot-actuator-metrics.listmetrics
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-metric-value
+      description: Get Metric Value
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: boot-actuator-metrics.getmetric
+      with:
+        requiredMetricName: tools.requiredMetricName
+        tag: tools.tag
+      outputParameters:
+      - type: object
+        mapping: $.

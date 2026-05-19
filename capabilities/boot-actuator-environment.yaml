@@ -1,0 +1,113 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Spring Boot Actuator API — Environment
+  description: 'Spring Boot Actuator API — Environment. 2 operations. Lead operation: Get Environment Properties. Self-contained
+    Naftiko capability covering one Spring business surface.'
+  tags:
+  - Spring
+  - Environment
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    SPRING_API_KEY: SPRING_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: boot-actuator-environment
+    baseUri: http://localhost:8080/actuator
+    description: Spring Boot Actuator API — Environment business capability. Self-contained, no shared references.
+    resources:
+    - name: env
+      path: /env
+      operations:
+      - name: getenvironment
+        method: GET
+        description: Get Environment Properties
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: env-toMatch
+      path: /env/{toMatch}
+      operations:
+      - name: getenvironmentproperty
+        method: GET
+        description: Get Environment Property
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: toMatch
+          in: path
+          type: string
+          description: Property key to look up
+          required: true
+    authentication:
+      type: basic
+      username: '{{env.SPRING_USER}}'
+      password: '{{env.SPRING_PASS}}'
+  exposes:
+  - type: rest
+    namespace: boot-actuator-environment-rest
+    port: 8080
+    description: REST adapter for Spring Boot Actuator API — Environment. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/env
+      name: env
+      description: REST surface for env.
+      operations:
+      - method: GET
+        name: getenvironment
+        description: Get Environment Properties
+        call: boot-actuator-environment.getenvironment
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/env/{tomatch}
+      name: env-tomatch
+      description: REST surface for env-toMatch.
+      operations:
+      - method: GET
+        name: getenvironmentproperty
+        description: Get Environment Property
+        call: boot-actuator-environment.getenvironmentproperty
+        with:
+          toMatch: rest.toMatch
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: boot-actuator-environment-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Spring Boot Actuator API — Environment. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: get-environment-properties
+      description: Get Environment Properties
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: boot-actuator-environment.getenvironment
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-environment-property
+      description: Get Environment Property
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: boot-actuator-environment.getenvironmentproperty
+      with:
+        toMatch: tools.toMatch
+      outputParameters:
+      - type: object
+        mapping: $.

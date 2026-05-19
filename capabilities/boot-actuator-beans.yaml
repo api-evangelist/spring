@@ -1,0 +1,71 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Spring Boot Actuator API — Beans
+  description: 'Spring Boot Actuator API — Beans. 1 operations. Lead operation: Get Application Beans. Self-contained Naftiko
+    capability covering one Spring business surface.'
+  tags:
+  - Spring
+  - Beans
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    SPRING_API_KEY: SPRING_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: boot-actuator-beans
+    baseUri: http://localhost:8080/actuator
+    description: Spring Boot Actuator API — Beans business capability. Self-contained, no shared references.
+    resources:
+    - name: beans
+      path: /beans
+      operations:
+      - name: getbeans
+        method: GET
+        description: Get Application Beans
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: basic
+      username: '{{env.SPRING_USER}}'
+      password: '{{env.SPRING_PASS}}'
+  exposes:
+  - type: rest
+    namespace: boot-actuator-beans-rest
+    port: 8080
+    description: REST adapter for Spring Boot Actuator API — Beans. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/beans
+      name: beans
+      description: REST surface for beans.
+      operations:
+      - method: GET
+        name: getbeans
+        description: Get Application Beans
+        call: boot-actuator-beans.getbeans
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: boot-actuator-beans-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Spring Boot Actuator API — Beans. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: get-application-beans
+      description: Get Application Beans
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: boot-actuator-beans.getbeans
+      outputParameters:
+      - type: object
+        mapping: $.

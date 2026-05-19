@@ -1,0 +1,113 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Spring Boot Actuator API — Health
+  description: 'Spring Boot Actuator API — Health. 2 operations. Lead operation: Get Health Status. Self-contained Naftiko
+    capability covering one Spring business surface.'
+  tags:
+  - Spring
+  - Health
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    SPRING_API_KEY: SPRING_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: boot-actuator-health
+    baseUri: http://localhost:8080/actuator
+    description: Spring Boot Actuator API — Health business capability. Self-contained, no shared references.
+    resources:
+    - name: health
+      path: /health
+      operations:
+      - name: gethealth
+        method: GET
+        description: Get Health Status
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: health-component
+      path: /health/{component}
+      operations:
+      - name: getcomponenthealth
+        method: GET
+        description: Get Component Health Status
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: component
+          in: path
+          type: string
+          description: Health indicator component name (e.g., db, diskSpace, redis)
+          required: true
+    authentication:
+      type: basic
+      username: '{{env.SPRING_USER}}'
+      password: '{{env.SPRING_PASS}}'
+  exposes:
+  - type: rest
+    namespace: boot-actuator-health-rest
+    port: 8080
+    description: REST adapter for Spring Boot Actuator API — Health. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/health
+      name: health
+      description: REST surface for health.
+      operations:
+      - method: GET
+        name: gethealth
+        description: Get Health Status
+        call: boot-actuator-health.gethealth
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/health/{component}
+      name: health-component
+      description: REST surface for health-component.
+      operations:
+      - method: GET
+        name: getcomponenthealth
+        description: Get Component Health Status
+        call: boot-actuator-health.getcomponenthealth
+        with:
+          component: rest.component
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: boot-actuator-health-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Spring Boot Actuator API — Health. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: get-health-status
+      description: Get Health Status
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: boot-actuator-health.gethealth
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-component-health-status
+      description: Get Component Health Status
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: boot-actuator-health.getcomponenthealth
+      with:
+        component: tools.component
+      outputParameters:
+      - type: object
+        mapping: $.
