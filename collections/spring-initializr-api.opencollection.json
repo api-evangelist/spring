@@ -1,0 +1,226 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Spring Initializr API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Project Generation",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Generate Project ZIP",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://start.spring.io/starter.zip",
+            "params": [
+              {
+                "name": "type",
+                "value": "",
+                "type": "query",
+                "description": "Project type (build system)"
+              },
+              {
+                "name": "language",
+                "value": "",
+                "type": "query",
+                "description": "Programming language"
+              },
+              {
+                "name": "bootVersion",
+                "value": "3.4.5",
+                "type": "query",
+                "description": "Spring Boot version"
+              },
+              {
+                "name": "baseDir",
+                "value": "demo",
+                "type": "query",
+                "description": "Base directory for the generated project archive"
+              },
+              {
+                "name": "groupId",
+                "value": "",
+                "type": "query",
+                "description": "Maven group ID"
+              },
+              {
+                "name": "artifactId",
+                "value": "",
+                "type": "query",
+                "description": "Maven artifact ID / project name"
+              },
+              {
+                "name": "name",
+                "value": "",
+                "type": "query",
+                "description": "Project name"
+              },
+              {
+                "name": "description",
+                "value": "",
+                "type": "query",
+                "description": "Project description"
+              },
+              {
+                "name": "packageName",
+                "value": "",
+                "type": "query",
+                "description": "Root Java package name"
+              },
+              {
+                "name": "packaging",
+                "value": "",
+                "type": "query",
+                "description": "Packaging type"
+              },
+              {
+                "name": "javaVersion",
+                "value": "",
+                "type": "query",
+                "description": "Java version"
+              },
+              {
+                "name": "dependencies",
+                "value": "web,data-jpa,security,actuator,lombok",
+                "type": "query",
+                "description": "Comma-separated list of dependency IDs to include (e.g., web,data-jpa,security,actuator)"
+              }
+            ]
+          },
+          "docs": "Generates a new Spring Boot project and returns it as a ZIP archive. Specify the project group, artifact, dependencies, Java version, Spring Boot version, and other options via query parameters."
+        },
+        {
+          "info": {
+            "name": "Generate Project TGZ",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://start.spring.io/starter.tgz",
+            "params": [
+              {
+                "name": "type",
+                "value": "",
+                "type": "query",
+                "description": "Project type (build system)"
+              },
+              {
+                "name": "language",
+                "value": "",
+                "type": "query",
+                "description": "Programming language"
+              },
+              {
+                "name": "bootVersion",
+                "value": "3.4.5",
+                "type": "query",
+                "description": "Spring Boot version"
+              },
+              {
+                "name": "baseDir",
+                "value": "demo",
+                "type": "query",
+                "description": "Base directory for the generated project archive"
+              },
+              {
+                "name": "groupId",
+                "value": "",
+                "type": "query",
+                "description": "Maven group ID"
+              },
+              {
+                "name": "artifactId",
+                "value": "",
+                "type": "query",
+                "description": "Maven artifact ID / project name"
+              },
+              {
+                "name": "name",
+                "value": "",
+                "type": "query",
+                "description": "Project name"
+              },
+              {
+                "name": "description",
+                "value": "",
+                "type": "query",
+                "description": "Project description"
+              },
+              {
+                "name": "packageName",
+                "value": "",
+                "type": "query",
+                "description": "Root Java package name"
+              },
+              {
+                "name": "packaging",
+                "value": "",
+                "type": "query",
+                "description": "Packaging type"
+              },
+              {
+                "name": "javaVersion",
+                "value": "",
+                "type": "query",
+                "description": "Java version"
+              },
+              {
+                "name": "dependencies",
+                "value": "web,data-jpa,security,actuator,lombok",
+                "type": "query",
+                "description": "Comma-separated list of dependency IDs to include (e.g., web,data-jpa,security,actuator)"
+              }
+            ]
+          },
+          "docs": "Generates a new Spring Boot project and returns it as a tar.gz archive. Accepts the same query parameters as the ZIP endpoint."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Metadata",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Initializr Metadata",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://start.spring.io/"
+          },
+          "docs": "Returns the full metadata document describing all available project types, Spring Boot versions, dependencies, languages, Java versions, packaging options, and their defaults. Clients use this to present choices to the user before generating a project."
+        },
+        {
+          "info": {
+            "name": "Get Available Dependencies",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://start.spring.io/dependencies",
+            "params": [
+              {
+                "name": "bootVersion",
+                "value": "3.4.5",
+                "type": "query",
+                "description": "Filter dependencies by Spring Boot version compatibility"
+              }
+            ]
+          },
+          "docs": "Returns the list of available Spring Boot starter dependencies that can be added to a generated project. Results can be filtered by Spring Boot version compatibility."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

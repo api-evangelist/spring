@@ -1,0 +1,579 @@
+{
+  "item": [
+    {
+      "id": "3a465c13-75e8-4a76-bc0d-bd60e3ac815a",
+      "name": "Project Generation",
+      "description": {
+        "content": "Generate new Spring Boot project archives",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "ee8463c1-8486-4221-a8ad-5cc2280a6416",
+          "name": "Generate Project ZIP",
+          "request": {
+            "name": "Generate Project ZIP",
+            "description": {
+              "content": "Generates a new Spring Boot project and returns it as a ZIP archive. Specify the project group, artifact, dependencies, Java version, Spring Boot version, and other options via query parameters.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "starter.zip"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "type",
+                  "value": "maven-project",
+                  "description": "Project type (build system)"
+                },
+                {
+                  "disabled": false,
+                  "key": "language",
+                  "value": "java",
+                  "description": "Programming language"
+                },
+                {
+                  "disabled": false,
+                  "key": "bootVersion",
+                  "value": "<string>",
+                  "description": "Spring Boot version"
+                },
+                {
+                  "disabled": false,
+                  "key": "baseDir",
+                  "value": "<string>",
+                  "description": "Base directory for the generated project archive"
+                },
+                {
+                  "disabled": false,
+                  "key": "groupId",
+                  "value": "com.example",
+                  "description": "Maven group ID"
+                },
+                {
+                  "disabled": false,
+                  "key": "artifactId",
+                  "value": "demo",
+                  "description": "Maven artifact ID / project name"
+                },
+                {
+                  "disabled": false,
+                  "key": "name",
+                  "value": "demo",
+                  "description": "Project name"
+                },
+                {
+                  "disabled": false,
+                  "key": "description",
+                  "value": "Demo project for Spring Boot",
+                  "description": "Project description"
+                },
+                {
+                  "disabled": false,
+                  "key": "packageName",
+                  "value": "com.example.demo",
+                  "description": "Root Java package name"
+                },
+                {
+                  "disabled": false,
+                  "key": "packaging",
+                  "value": "jar",
+                  "description": "Packaging type"
+                },
+                {
+                  "disabled": false,
+                  "key": "javaVersion",
+                  "value": "21",
+                  "description": "Java version"
+                },
+                {
+                  "disabled": false,
+                  "key": "dependencies",
+                  "value": "<string>",
+                  "description": "Comma-separated list of dependency IDs to include (e.g., web,data-jpa,security,actuator)"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/zip"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "803377bc-b5b7-4b8e-996a-0cf5748243b1",
+              "name": "ZIP archive of the generated project",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "starter.zip"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "type",
+                      "value": "maven-project"
+                    },
+                    {
+                      "key": "language",
+                      "value": "java"
+                    },
+                    {
+                      "key": "bootVersion",
+                      "value": "3.4.5"
+                    },
+                    {
+                      "key": "baseDir",
+                      "value": "demo"
+                    },
+                    {
+                      "key": "groupId",
+                      "value": "com.example"
+                    },
+                    {
+                      "key": "artifactId",
+                      "value": "demo"
+                    },
+                    {
+                      "key": "name",
+                      "value": "demo"
+                    },
+                    {
+                      "key": "description",
+                      "value": "Demo project for Spring Boot"
+                    },
+                    {
+                      "key": "packageName",
+                      "value": "com.example.demo"
+                    },
+                    {
+                      "key": "packaging",
+                      "value": "jar"
+                    },
+                    {
+                      "key": "javaVersion",
+                      "value": "21"
+                    },
+                    {
+                      "key": "dependencies",
+                      "value": "web,data-jpa,security,actuator,lombok"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/zip"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/zip"
+                }
+              ],
+              "body": "string",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "71dcb52b-93fa-48af-b9ef-62b9f1667939",
+          "name": "Generate Project TGZ",
+          "request": {
+            "name": "Generate Project TGZ",
+            "description": {
+              "content": "Generates a new Spring Boot project and returns it as a tar.gz archive. Accepts the same query parameters as the ZIP endpoint.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "starter.tgz"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "type",
+                  "value": "maven-project",
+                  "description": "Project type (build system)"
+                },
+                {
+                  "disabled": false,
+                  "key": "language",
+                  "value": "java",
+                  "description": "Programming language"
+                },
+                {
+                  "disabled": false,
+                  "key": "bootVersion",
+                  "value": "<string>",
+                  "description": "Spring Boot version"
+                },
+                {
+                  "disabled": false,
+                  "key": "baseDir",
+                  "value": "<string>",
+                  "description": "Base directory for the generated project archive"
+                },
+                {
+                  "disabled": false,
+                  "key": "groupId",
+                  "value": "com.example",
+                  "description": "Maven group ID"
+                },
+                {
+                  "disabled": false,
+                  "key": "artifactId",
+                  "value": "demo",
+                  "description": "Maven artifact ID / project name"
+                },
+                {
+                  "disabled": false,
+                  "key": "name",
+                  "value": "demo",
+                  "description": "Project name"
+                },
+                {
+                  "disabled": false,
+                  "key": "description",
+                  "value": "Demo project for Spring Boot",
+                  "description": "Project description"
+                },
+                {
+                  "disabled": false,
+                  "key": "packageName",
+                  "value": "com.example.demo",
+                  "description": "Root Java package name"
+                },
+                {
+                  "disabled": false,
+                  "key": "packaging",
+                  "value": "jar",
+                  "description": "Packaging type"
+                },
+                {
+                  "disabled": false,
+                  "key": "javaVersion",
+                  "value": "21",
+                  "description": "Java version"
+                },
+                {
+                  "disabled": false,
+                  "key": "dependencies",
+                  "value": "<string>",
+                  "description": "Comma-separated list of dependency IDs to include (e.g., web,data-jpa,security,actuator)"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/x-tar"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f980578d-d4b7-43c8-b131-b0d01f68ed7a",
+              "name": "TGZ archive of the generated project",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "starter.tgz"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "type",
+                      "value": "maven-project"
+                    },
+                    {
+                      "key": "language",
+                      "value": "java"
+                    },
+                    {
+                      "key": "bootVersion",
+                      "value": "3.4.5"
+                    },
+                    {
+                      "key": "baseDir",
+                      "value": "demo"
+                    },
+                    {
+                      "key": "groupId",
+                      "value": "com.example"
+                    },
+                    {
+                      "key": "artifactId",
+                      "value": "demo"
+                    },
+                    {
+                      "key": "name",
+                      "value": "demo"
+                    },
+                    {
+                      "key": "description",
+                      "value": "Demo project for Spring Boot"
+                    },
+                    {
+                      "key": "packageName",
+                      "value": "com.example.demo"
+                    },
+                    {
+                      "key": "packaging",
+                      "value": "jar"
+                    },
+                    {
+                      "key": "javaVersion",
+                      "value": "21"
+                    },
+                    {
+                      "key": "dependencies",
+                      "value": "web,data-jpa,security,actuator,lombok"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/x-tar"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/x-tar"
+                }
+              ],
+              "body": "string",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "c22a66f8-01ca-4180-a054-45ffaf3da335",
+      "name": "Metadata",
+      "description": {
+        "content": "Discover available project options and capabilities",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "1c1ee1d1-5080-473d-97c2-d34aa366fc49",
+          "name": "Get Initializr Metadata",
+          "request": {
+            "name": "Get Initializr Metadata",
+            "description": {
+              "content": "Returns the full metadata document describing all available project types, Spring Boot versions, dependencies, languages, Java versions, packaging options, and their defaults. Clients use this to present choices to the user before generating a project.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6ef1ba28-6d91-48d1-a9fa-28a20daa5db8",
+              "name": "Spring Initializr metadata",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"dependencies\": {\n    \"type\": \"hierarchical-multi-select\",\n    \"values\": [\n      {\n        \"name\": \"Web\",\n        \"values\": [\n          {\n            \"id\": \"web\",\n            \"name\": \"Spring Web\",\n            \"description\": \"Build web, including RESTful, applications using Spring MVC.\",\n            \"compatibilityRange\": \"[3.0.0,4.0.0-M1)\"\n          },\n          {\n            \"id\": \"web\",\n            \"name\": \"Spring Web\",\n            \"description\": \"Build web, including RESTful, applications using Spring MVC.\",\n            \"compatibilityRange\": \"[3.0.0,4.0.0-M1)\"\n          }\n        ]\n      },\n      {\n        \"name\": \"Web\",\n        \"values\": [\n          {\n            \"id\": \"web\",\n            \"name\": \"Spring Web\",\n            \"description\": \"Build web, including RESTful, applications using Spring MVC.\",\n            \"compatibilityRange\": \"[3.0.0,4.0.0-M1)\"\n          },\n          {\n            \"id\": \"web\",\n            \"name\": \"Spring Web\",\n            \"description\": \"Build web, including RESTful, applications using Spring MVC.\",\n            \"compatibilityRange\": \"[3.0.0,4.0.0-M1)\"\n          }\n        ]\n      }\n    ]\n  },\n  \"type\": {\n    \"type\": \"string\",\n    \"default\": \"string\",\n    \"values\": [\n      {\n        \"id\": \"string\",\n        \"name\": \"string\",\n        \"default\": false\n      },\n      {\n        \"id\": \"string\",\n        \"name\": \"string\",\n        \"default\": true\n      }\n    ]\n  },\n  \"bootVersion\": {\n    \"type\": \"string\",\n    \"default\": \"string\",\n    \"values\": [\n      {\n        \"id\": \"string\",\n        \"name\": \"string\",\n        \"default\": false\n      },\n      {\n        \"id\": \"string\",\n        \"name\": \"string\",\n        \"default\": true\n      }\n    ]\n  },\n  \"packaging\": {\n    \"type\": \"string\",\n    \"default\": \"string\",\n    \"values\": [\n      {\n        \"id\": \"string\",\n        \"name\": \"string\",\n        \"default\": true\n      },\n      {\n        \"id\": \"string\",\n        \"name\": \"string\",\n        \"default\": false\n      }\n    ]\n  },\n  \"javaVersion\": {\n    \"type\": \"string\",\n    \"default\": \"string\",\n    \"values\": [\n      {\n        \"id\": \"string\",\n        \"name\": \"string\",\n        \"default\": true\n      },\n      {\n        \"id\": \"string\",\n        \"name\": \"string\",\n        \"default\": false\n      }\n    ]\n  },\n  \"language\": {\n    \"type\": \"string\",\n    \"default\": \"string\",\n    \"values\": [\n      {\n        \"id\": \"string\",\n        \"name\": \"string\",\n        \"default\": true\n      },\n      {\n        \"id\": \"string\",\n        \"name\": \"string\",\n        \"default\": true\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8c8f9ed8-5c20-480e-b3d5-09536912941d",
+          "name": "Get Available Dependencies",
+          "request": {
+            "name": "Get Available Dependencies",
+            "description": {
+              "content": "Returns the list of available Spring Boot starter dependencies that can be added to a generated project. Results can be filtered by Spring Boot version compatibility.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "dependencies"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "bootVersion",
+                  "value": "<string>",
+                  "description": "Filter dependencies by Spring Boot version compatibility"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/vnd.initializr.v2.2+json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ef0f5248-52de-4379-ab7a-a739b2d3ea43",
+              "name": "Available dependencies",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "dependencies"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "bootVersion",
+                      "value": "3.4.5"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.initializr.v2.2+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.initializr.v2.2+json"
+                }
+              ],
+              "body": "{\n  \"bootVersion\": \"3.4.5\",\n  \"dependencies\": {\n    \"key_0\": {\n      \"id\": \"web\",\n      \"name\": \"Spring Web\",\n      \"description\": \"Build web, including RESTful, applications using Spring MVC.\",\n      \"compatibilityRange\": \"[3.0.0,4.0.0-M1)\"\n    },\n    \"key_1\": {\n      \"id\": \"web\",\n      \"name\": \"Spring Web\",\n      \"description\": \"Build web, including RESTful, applications using Spring MVC.\",\n      \"compatibilityRange\": \"[3.0.0,4.0.0-M1)\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://start.spring.io",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "c4a7d0f3-ddc2-4d94-8f5b-7a2bda88396f",
+    "name": "Spring Initializr API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Spring Initializr REST API enables programmatic generation of Spring Boot project scaffolding. It provides endpoints to discover available dependencies, project types, Spring Boot versions, and packaging options, as well as generating ready-to-use project archives in zip or tar.gz format. The API is used by IDEs (IntelliJ IDEA, Eclipse Spring Tools Suite, VS Code Spring Boot Extension), CLI tools (Spring CLI), and custom tooling to bootstrap new Spring Boot projects.\n\nContact Support:\n Name: Spring Team",
+      "type": "text/plain"
+    }
+  }
+}

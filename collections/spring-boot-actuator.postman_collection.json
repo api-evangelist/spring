@@ -1,0 +1,1294 @@
+{
+  "item": [
+    {
+      "id": "ca58fa72-b06f-4507-9067-4a3567330e41",
+      "name": "Health",
+      "description": {
+        "content": "Application health status and component health details",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "061bfed1-6545-41ab-980b-f44659ba7bea",
+          "name": "Get Health Status",
+          "request": {
+            "name": "Get Health Status",
+            "description": {
+              "content": "Returns the health status of the application and all registered health indicators (database, disk space, Redis, Kafka, etc.). The response detail level is controlled by the management.endpoint.health.show-details configuration property.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "health"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/vnd.spring-boot.actuator.v3+json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c5106737-d92c-4cc2-8d17-08b1ff782468",
+              "name": "Application is healthy",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "health"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.spring-boot.actuator.v3+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.spring-boot.actuator.v3+json"
+                }
+              ],
+              "body": "{\n  \"status\": \"UP\",\n  \"components\": {\n    \"key_0\": {\n      \"status\": \"UP\",\n      \"details\": {\n        \"key_0\": 4940.857268147396,\n        \"key_1\": \"string\",\n        \"key_2\": \"string\",\n        \"key_3\": \"string\"\n      }\n    },\n    \"key_1\": {\n      \"status\": \"UP\",\n      \"details\": {\n        \"key_0\": 5285\n      }\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "caaf6cb7-0002-4e85-ae8f-a7f0ef56ede6",
+              "name": "Application is unhealthy or out of service",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "health"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.spring-boot.actuator.v3+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Service Unavailable",
+              "code": 503,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.spring-boot.actuator.v3+json"
+                }
+              ],
+              "body": "{\n  \"status\": \"UP\",\n  \"components\": {\n    \"key_0\": {\n      \"status\": \"UP\",\n      \"details\": {\n        \"key_0\": 4940.857268147396,\n        \"key_1\": \"string\",\n        \"key_2\": \"string\",\n        \"key_3\": \"string\"\n      }\n    },\n    \"key_1\": {\n      \"status\": \"UP\",\n      \"details\": {\n        \"key_0\": 5285\n      }\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c92400db-4e83-47c7-9459-2fa1b1938002",
+          "name": "Get Component Health Status",
+          "request": {
+            "name": "Get Component Health Status",
+            "description": {
+              "content": "Returns health details for a specific health indicator component.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "health",
+                ":component"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "component",
+                  "description": "(Required) Health indicator component name (e.g., db, diskSpace, redis)"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/vnd.spring-boot.actuator.v3+json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "995bf358-edf9-4321-b536-e731727ff083",
+              "name": "Component health details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "health",
+                    ":component"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "component",
+                      "description": "(Required) Health indicator component name (e.g., db, diskSpace, redis)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.spring-boot.actuator.v3+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.spring-boot.actuator.v3+json"
+                }
+              ],
+              "body": "{\n  \"status\": \"UP\",\n  \"details\": {\n    \"key_0\": 2155.807951624438\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "dac8da55-34bf-4f51-a6f9-3c080af59637",
+      "name": "Metrics",
+      "description": {
+        "content": "Application performance and operational metrics",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "49bad8cd-e73b-4535-88ad-d4b35c438864",
+          "name": "List Available Metrics",
+          "request": {
+            "name": "List Available Metrics",
+            "description": {
+              "content": "Returns a list of all available metric names registered in the application.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "metrics"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/vnd.spring-boot.actuator.v3+json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "065a9693-0d5c-46e4-b650-6ce16437c56d",
+              "name": "List of available metric names",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "metrics"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.spring-boot.actuator.v3+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.spring-boot.actuator.v3+json"
+                }
+              ],
+              "body": "{\n  \"names\": [\n    \"jvm.memory.used\",\n    \"jvm.memory.max\",\n    \"http.server.requests\",\n    \"process.cpu.usage\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "01df82f2-29c9-4d5e-9d18-fceb8e6b2779",
+          "name": "Get Metric Value",
+          "request": {
+            "name": "Get Metric Value",
+            "description": {
+              "content": "Returns the current value(s) for a specific metric. Metrics are identified by their dot-notation name (e.g., jvm.memory.used, http.server.requests). Results can be filtered by tag using the tag query parameter.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "metrics",
+                ":requiredMetricName"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "tag",
+                  "value": "<string>",
+                  "description": "Tag filter in KEY:VALUE format (can be repeated for multiple tags). Example: area:heap or area:heap&tag=id:G1+Eden+Space"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "requiredMetricName",
+                  "description": "(Required) Metric name in dot notation"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/vnd.spring-boot.actuator.v3+json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ef3e6e9c-3035-446e-b5f5-94638e944885",
+              "name": "Metric value and measurements",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "metrics",
+                    ":requiredMetricName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "tag",
+                      "value": "area:heap"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "requiredMetricName",
+                      "description": "(Required) Metric name in dot notation"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.spring-boot.actuator.v3+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.spring-boot.actuator.v3+json"
+                }
+              ],
+              "body": "{\n  \"name\": \"jvm.memory.used\",\n  \"description\": \"string\",\n  \"baseUnit\": \"bytes\",\n  \"measurements\": [\n    {\n      \"statistic\": \"VALUE\",\n      \"value\": 123456789\n    },\n    {\n      \"statistic\": \"VALUE\",\n      \"value\": 123456789\n    }\n  ],\n  \"availableTags\": [\n    {\n      \"tag\": \"string\",\n      \"values\": [\n        \"string\",\n        \"string\"\n      ]\n    },\n    {\n      \"tag\": \"string\",\n      \"values\": [\n        \"string\",\n        \"string\"\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "546381eb-cbb3-4cc2-b9b2-e75a546d2e54",
+      "name": "Info",
+      "description": {
+        "content": "Application information and build metadata",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "7e2ec58d-e6a9-4ba9-9264-6df0e2ef1d22",
+          "name": "Get Application Info",
+          "request": {
+            "name": "Get Application Info",
+            "description": {
+              "content": "Returns application information including build details, Git commit info, Java runtime version, and any custom info contributors registered in the application context.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "info"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/vnd.spring-boot.actuator.v3+json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "4a710b7b-a452-43dc-afef-6d333db350d3",
+              "name": "Application information",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "info"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.spring-boot.actuator.v3+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.spring-boot.actuator.v3+json"
+                }
+              ],
+              "body": "{\n  \"build\": {\n    \"artifact\": \"my-app\",\n    \"group\": \"com.example\",\n    \"version\": \"1.0.0\",\n    \"time\": \"2021-11-27T22:54:11.602Z\"\n  },\n  \"git\": {\n    \"branch\": \"main\",\n    \"commit\": {\n      \"id\": \"string\",\n      \"time\": \"string\"\n    }\n  },\n  \"java\": {\n    \"version\": \"21\",\n    \"vendor\": {}\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "f495360a-4c3b-4a9a-9ac9-c55caa761e77",
+      "name": "Environment",
+      "description": {
+        "content": "Environment properties and configuration",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "82e733d7-a74f-40ca-b60c-805faa5f6356",
+          "name": "Get Environment Properties",
+          "request": {
+            "name": "Get Environment Properties",
+            "description": {
+              "content": "Returns a snapshot of the application's environment including all property sources (application.properties, system environment, JVM system properties, etc.). Sensitive values are masked.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "env"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/vnd.spring-boot.actuator.v3+json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c8569fc0-593e-431d-aea8-06499415ba60",
+              "name": "Environment properties",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "env"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.spring-boot.actuator.v3+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.spring-boot.actuator.v3+json"
+                }
+              ],
+              "body": "{\n  \"activeProfiles\": [\n    \"production\"\n  ],\n  \"propertySources\": [\n    {\n      \"name\": \"string\",\n      \"properties\": {\n        \"key_0\": 7930\n      }\n    },\n    {\n      \"name\": \"string\",\n      \"properties\": {\n        \"key_0\": 2658.304523363615,\n        \"key_1\": \"string\"\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6b03a51d-6777-4b83-a317-b7d18133b61d",
+          "name": "Get Environment Property",
+          "request": {
+            "name": "Get Environment Property",
+            "description": {
+              "content": "Returns a specific environment property value by key.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "env",
+                ":toMatch"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "toMatch",
+                  "description": "(Required) Property key to look up"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/vnd.spring-boot.actuator.v3+json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e23b2979-c033-425c-a894-23026803633f",
+              "name": "Property value from environment",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "env",
+                    ":toMatch"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "toMatch",
+                      "description": "(Required) Property key to look up"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.spring-boot.actuator.v3+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.spring-boot.actuator.v3+json"
+                }
+              ],
+              "body": "{\n  \"property\": {\n    \"source\": \"string\",\n    \"value\": \"string\"\n  },\n  \"activeContexts\": [\n    \"string\",\n    \"string\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "47685029-2cc6-4eda-9011-d8a0428936b6",
+      "name": "Beans",
+      "description": {
+        "content": "Spring application context beans",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "8b21e9ea-7932-4de7-b937-6b86ee2107e1",
+          "name": "Get Application Beans",
+          "request": {
+            "name": "Get Application Beans",
+            "description": {
+              "content": "Returns a complete list of Spring beans instantiated in the application context, along with their type, scope, and dependencies.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "beans"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/vnd.spring-boot.actuator.v3+json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6562cd84-a94b-4a59-bb98-e948a08d75d2",
+              "name": "Spring application context beans",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "beans"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.spring-boot.actuator.v3+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.spring-boot.actuator.v3+json"
+                }
+              ],
+              "body": "{\n  \"contexts\": {\n    \"key_0\": {\n      \"beans\": {\n        \"key_0\": {\n          \"aliases\": [\n            \"string\",\n            \"string\"\n          ],\n          \"scope\": \"string\",\n          \"type\": \"string\",\n          \"resource\": \"string\",\n          \"dependencies\": [\n            \"string\",\n            \"string\"\n          ]\n        },\n        \"key_1\": {\n          \"aliases\": [\n            \"string\",\n            \"string\"\n          ],\n          \"scope\": \"string\",\n          \"type\": \"string\",\n          \"resource\": \"string\",\n          \"dependencies\": [\n            \"string\",\n            \"string\"\n          ]\n        },\n        \"key_2\": {\n          \"aliases\": [\n            \"string\",\n            \"string\"\n          ],\n          \"scope\": \"string\",\n          \"type\": \"string\",\n          \"resource\": \"string\",\n          \"dependencies\": [\n            \"string\",\n            \"string\"\n          ]\n        }\n      }\n    },\n    \"key_1\": {\n      \"beans\": {\n        \"key_0\": {\n          \"aliases\": [\n            \"string\",\n            \"string\"\n          ],\n          \"scope\": \"string\",\n          \"type\": \"string\",\n          \"resource\": \"string\",\n          \"dependencies\": [\n            \"string\",\n            \"string\"\n          ]\n        },\n        \"key_1\": {\n          \"aliases\": [\n            \"string\",\n            \"string\"\n          ],\n          \"scope\": \"string\",\n          \"type\": \"string\",\n          \"resource\": \"string\",\n          \"dependencies\": [\n            \"string\",\n            \"string\"\n          ]\n        },\n        \"key_2\": {\n          \"aliases\": [\n            \"string\",\n            \"string\"\n          ],\n          \"scope\": \"string\",\n          \"type\": \"string\",\n          \"resource\": \"string\",\n          \"dependencies\": [\n            \"string\",\n            \"string\"\n          ]\n        }\n      }\n    },\n    \"key_2\": {\n      \"beans\": {\n        \"key_0\": {\n          \"aliases\": [\n            \"string\",\n            \"string\"\n          ],\n          \"scope\": \"string\",\n          \"type\": \"string\",\n          \"resource\": \"string\",\n          \"dependencies\": [\n            \"string\",\n            \"string\"\n          ]\n        },\n        \"key_1\": {\n          \"aliases\": [\n            \"string\",\n            \"string\"\n          ],\n          \"scope\": \"string\",\n          \"type\": \"string\",\n          \"resource\": \"string\",\n          \"dependencies\": [\n            \"string\",\n            \"string\"\n          ]\n        },\n        \"key_2\": {\n          \"aliases\": [\n            \"string\",\n            \"string\"\n          ],\n          \"scope\": \"string\",\n          \"type\": \"string\",\n          \"resource\": \"string\",\n          \"dependencies\": [\n            \"string\",\n            \"string\"\n          ]\n        }\n      }\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "da10e94b-7ee4-480f-92c9-261279ab529b",
+      "name": "Mappings",
+      "description": {
+        "content": "HTTP request handler mappings",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "4f657f0a-8d5a-498a-ad2d-242e694decc2",
+          "name": "Get Request Mappings",
+          "request": {
+            "name": "Get Request Mappings",
+            "description": {
+              "content": "Returns all @RequestMapping paths, handler methods, and filters registered in the Spring application context. Useful for API discovery and debugging.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "mappings"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/vnd.spring-boot.actuator.v3+json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b4815c23-4064-4029-8258-a70510d71999",
+              "name": "HTTP request mappings",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "mappings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.spring-boot.actuator.v3+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.spring-boot.actuator.v3+json"
+                }
+              ],
+              "body": "{\n  \"contexts\": {\n    \"key_0\": {\n      \"mappings\": {}\n    },\n    \"key_1\": {\n      \"mappings\": {}\n    },\n    \"key_2\": {\n      \"mappings\": {}\n    },\n    \"key_3\": {\n      \"mappings\": {}\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "ca5aa8d2-ad62-49a4-963d-3cf8d3da8ca4",
+      "name": "Loggers",
+      "description": {
+        "content": "Application logger configuration",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "0d725823-84ed-4134-803a-ca2ca017bc4d",
+          "name": "List Loggers",
+          "request": {
+            "name": "List Loggers",
+            "description": {
+              "content": "Returns the configured log levels for all loggers in the application.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "loggers"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/vnd.spring-boot.actuator.v3+json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "7bb73bd8-aa2a-415c-b5ae-510ce04b6c14",
+              "name": "Logger configurations",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "loggers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.spring-boot.actuator.v3+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.spring-boot.actuator.v3+json"
+                }
+              ],
+              "body": "{\n  \"levels\": [\n    \"TRACE\",\n    \"DEBUG\",\n    \"INFO\",\n    \"WARN\",\n    \"ERROR\"\n  ],\n  \"loggers\": {\n    \"key_0\": {\n      \"configuredLevel\": \"INFO\",\n      \"effectiveLevel\": \"INFO\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "50052ff7-b888-48ee-88de-e34a5fffef84",
+          "name": "Get Logger Configuration",
+          "request": {
+            "name": "Get Logger Configuration",
+            "description": {
+              "content": "Returns the configured and effective log level for a specific logger.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "loggers",
+                ":name"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "name",
+                  "description": "(Required) Logger name (e.g., com.example.MyService, ROOT)"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/vnd.spring-boot.actuator.v3+json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "cfb51e6b-609f-42ce-af7a-434d8adb0466",
+              "name": "Logger configuration",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "loggers",
+                    ":name"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "name",
+                      "description": "(Required) Logger name (e.g., com.example.MyService, ROOT)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.spring-boot.actuator.v3+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.spring-boot.actuator.v3+json"
+                }
+              ],
+              "body": "{\n  \"configuredLevel\": \"INFO\",\n  \"effectiveLevel\": \"INFO\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "dcae8ff5-dfbe-4881-be2e-0f16d8ebe3f0",
+          "name": "Set Logger Level",
+          "request": {
+            "name": "Set Logger Level",
+            "description": {
+              "content": "Changes the log level for a specific logger at runtime without restarting the application.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "loggers",
+                ":name"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "name",
+                  "description": "(Required) Logger name"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"configuredLevel\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "b75d6291-ce67-490a-9df1-8c40ca38770d",
+              "name": "Logger level updated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "loggers",
+                    ":name"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "name",
+                      "description": "(Required) Logger name"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"configuredLevel\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "970f0d32-bf0d-4d23-81ca-9f47ddadf881",
+      "name": "Threads",
+      "description": {
+        "content": "Thread dump and virtual thread information",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "346723e4-8c24-4eb6-80fb-f4807c8e5d7d",
+          "name": "Get Thread Dump",
+          "request": {
+            "name": "Get Thread Dump",
+            "description": {
+              "content": "Returns a snapshot of all threads running in the JVM, including their state, stack traces, and lock information. Useful for diagnosing deadlocks or performance issues.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "threaddump"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/vnd.spring-boot.actuator.v3+json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "95c4471e-f950-4586-863a-dfeb93103109",
+              "name": "JVM thread dump",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "threaddump"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.spring-boot.actuator.v3+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.spring-boot.actuator.v3+json"
+                }
+              ],
+              "body": "{\n  \"threads\": [\n    {\n      \"threadName\": \"string\",\n      \"threadId\": 2540,\n      \"blockedTime\": 4889,\n      \"blockedCount\": 307,\n      \"waitedTime\": 5066,\n      \"waitedCount\": 289,\n      \"lockName\": \"string\",\n      \"lockOwnerId\": 2627,\n      \"lockOwnerName\": \"string\",\n      \"daemon\": false,\n      \"inNative\": true,\n      \"suspended\": false,\n      \"threadState\": \"RUNNABLE\",\n      \"priority\": 2426\n    },\n    {\n      \"threadName\": \"string\",\n      \"threadId\": 6639,\n      \"blockedTime\": 3543,\n      \"blockedCount\": 6462,\n      \"waitedTime\": 3759,\n      \"waitedCount\": 3097,\n      \"lockName\": \"string\",\n      \"lockOwnerId\": 151,\n      \"lockOwnerName\": \"string\",\n      \"daemon\": true,\n      \"inNative\": false,\n      \"suspended\": true,\n      \"threadState\": \"TERMINATED\",\n      \"priority\": 3902\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "http://localhost:8080/actuator",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "d659ce4d-b224-4d58-bbd5-4ca5356828fa",
+    "name": "Spring Boot Actuator API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Spring Boot Actuator API provides production-ready endpoints for monitoring and managing Spring Boot applications. It exposes health checks, metrics, environment information, configuration properties, thread dumps, HTTP traces, application info, and shutdown capabilities via RESTful endpoints. The Actuator supports customizable security, endpoint exposure controls, and integration with monitoring systems like Prometheus, Datadog, and CloudWatch. Used by operators and SREs to observe and manage deployed Spring Boot services.\n\nContact Support:\n Name: Spring Team",
+      "type": "text/plain"
+    }
+  }
+}

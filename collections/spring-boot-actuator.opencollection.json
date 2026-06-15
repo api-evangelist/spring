@@ -1,0 +1,274 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Spring Boot Actuator API",
+    "version": "3.x"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Health",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Health Status",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8080/actuator/health"
+          },
+          "docs": "Returns the health status of the application and all registered health indicators (database, disk space, Redis, Kafka, etc.). The response detail level is controlled by the management.endpoint.health.show-details configuration property."
+        },
+        {
+          "info": {
+            "name": "Get Component Health Status",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8080/actuator/health/:component",
+            "params": [
+              {
+                "name": "component",
+                "value": "db",
+                "type": "path",
+                "description": "Health indicator component name (e.g., db, diskSpace, redis)"
+              }
+            ]
+          },
+          "docs": "Returns health details for a specific health indicator component."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Metrics",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Available Metrics",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8080/actuator/metrics"
+          },
+          "docs": "Returns a list of all available metric names registered in the application."
+        },
+        {
+          "info": {
+            "name": "Get Metric Value",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8080/actuator/metrics/:requiredMetricName",
+            "params": [
+              {
+                "name": "requiredMetricName",
+                "value": "jvm.memory.used",
+                "type": "path",
+                "description": "Metric name in dot notation"
+              },
+              {
+                "name": "tag",
+                "value": "area:heap",
+                "type": "query",
+                "description": "Tag filter in KEY:VALUE format (can be repeated for multiple tags). Example: area:heap or area:heap&tag=id:G1+Eden+Space"
+              }
+            ]
+          },
+          "docs": "Returns the current value(s) for a specific metric. Metrics are identified by their dot-notation name (e.g., jvm.memory.used, http.server.requests). Results can be filtered by tag using the tag query parameter."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Info",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Application Info",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8080/actuator/info"
+          },
+          "docs": "Returns application information including build details, Git commit info, Java runtime version, and any custom info contributors registered in the application context."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Environment",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Environment Properties",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8080/actuator/env"
+          },
+          "docs": "Returns a snapshot of the application's environment including all property sources (application.properties, system environment, JVM system properties, etc.). Sensitive values are masked."
+        },
+        {
+          "info": {
+            "name": "Get Environment Property",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8080/actuator/env/:toMatch",
+            "params": [
+              {
+                "name": "toMatch",
+                "value": "spring.application.name",
+                "type": "path",
+                "description": "Property key to look up"
+              }
+            ]
+          },
+          "docs": "Returns a specific environment property value by key."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Loggers",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Loggers",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8080/actuator/loggers"
+          },
+          "docs": "Returns the configured log levels for all loggers in the application."
+        },
+        {
+          "info": {
+            "name": "Get Logger Configuration",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8080/actuator/loggers/:name",
+            "params": [
+              {
+                "name": "name",
+                "value": "com.example.app",
+                "type": "path",
+                "description": "Logger name (e.g., com.example.MyService, ROOT)"
+              }
+            ]
+          },
+          "docs": "Returns the configured and effective log level for a specific logger."
+        },
+        {
+          "info": {
+            "name": "Set Logger Level",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:8080/actuator/loggers/:name",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path",
+                "description": "Logger name"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Changes the log level for a specific logger at runtime without restarting the application."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Mappings",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Request Mappings",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8080/actuator/mappings"
+          },
+          "docs": "Returns all @RequestMapping paths, handler methods, and filters registered in the Spring application context. Useful for API discovery and debugging."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Threads",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Thread Dump",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8080/actuator/threaddump"
+          },
+          "docs": "Returns a snapshot of all threads running in the JVM, including their state, stack traces, and lock information. Useful for diagnosing deadlocks or performance issues."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Beans",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Application Beans",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8080/actuator/beans"
+          },
+          "docs": "Returns a complete list of Spring beans instantiated in the application context, along with their type, scope, and dependencies."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
