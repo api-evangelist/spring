@@ -173,7 +173,7 @@ common:
     url: https://spring.io/events
   - type: Maven Repository
     url: https://mvnrepository.com/artifact/org.springframework
-  - type: Releases
+  - type: ReleaseNotes
     url: https://github.com/spring-projects/spring-framework/releases
 maintainers:
   - name: Spring Team at VMware
