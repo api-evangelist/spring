@@ -157,6 +157,12 @@ apis:
       - type: GettingStarted
         url: https://docs.spring.io/spring-ai/reference/getting-started.html
 common:
+  - type: VulnerabilityDisclosure
+    url: security/spring-vulnerability-disclosure.yml
+  - type: DomainSecurity
+    url: security/spring-domain-security.yml
+  - type: Authentication
+    url: authentication/spring-authentication.yml
   - type: Website
     url: https://spring.io
   - type: GitHub
