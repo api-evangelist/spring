@@ -157,6 +157,8 @@ apis:
       - type: GettingStarted
         url: https://docs.spring.io/spring-ai/reference/getting-started.html
 common:
+  - type: AgenticAccess
+    url: agentic-access/spring-agentic-access.yml
   - type: VulnerabilityDisclosure
     url: security/spring-vulnerability-disclosure.yml
   - type: DomainSecurity
