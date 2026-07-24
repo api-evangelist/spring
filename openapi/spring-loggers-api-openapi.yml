@@ -1,0 +1,145 @@
+openapi: 3.1.0
+info:
+  title: Spring Boot Actuator Beans Loggers API
+  description: The Spring Boot Actuator API provides production-ready endpoints for monitoring and managing Spring Boot applications. It exposes health checks, metrics, environment information, configuration properties, thread dumps, HTTP traces, application info, and shutdown capabilities via RESTful endpoints. The Actuator supports customizable security, endpoint exposure controls, and integration with monitoring systems like Prometheus, Datadog, and CloudWatch. Used by operators and SREs to observe and manage deployed Spring Boot services.
+  version: 3.x
+  contact:
+    name: Spring Team
+    url: https://spring.io/support
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0
+servers:
+- url: http://localhost:8080/actuator
+  description: Default Local Spring Boot Actuator Endpoint
+security:
+- basicAuth: []
+tags:
+- name: Loggers
+  description: Application logger configuration
+paths:
+  /loggers:
+    get:
+      operationId: listLoggers
+      summary: List Loggers
+      description: Returns the configured log levels for all loggers in the application.
+      tags:
+      - Loggers
+      responses:
+        '200':
+          description: Logger configurations
+          content:
+            application/vnd.spring-boot.actuator.v3+json:
+              schema:
+                $ref: '#/components/schemas/LoggersResponse'
+  /loggers/{name}:
+    get:
+      operationId: getLogger
+      summary: Get Logger Configuration
+      description: Returns the configured and effective log level for a specific logger.
+      tags:
+      - Loggers
+      parameters:
+      - name: name
+        in: path
+        required: true
+        description: Logger name (e.g., com.example.MyService, ROOT)
+        schema:
+          type: string
+        example: com.example.app
+      responses:
+        '200':
+          description: Logger configuration
+          content:
+            application/vnd.spring-boot.actuator.v3+json:
+              schema:
+                $ref: '#/components/schemas/LoggerResponse'
+    post:
+      operationId: setLoggerLevel
+      summary: Set Logger Level
+      description: Changes the log level for a specific logger at runtime without restarting the application.
+      tags:
+      - Loggers
+      parameters:
+      - name: name
+        in: path
+        required: true
+        description: Logger name
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LoggerLevelRequest'
+      responses:
+        '204':
+          description: Logger level updated
+components:
+  schemas:
+    LoggerResponse:
+      type: object
+      description: Logger configuration
+      properties:
+        configuredLevel:
+          type: string
+          nullable: true
+          enum:
+          - TRACE
+          - DEBUG
+          - INFO
+          - WARN
+          - ERROR
+          - 'OFF'
+          - null
+          example: INFO
+        effectiveLevel:
+          type: string
+          enum:
+          - TRACE
+          - DEBUG
+          - INFO
+          - WARN
+          - ERROR
+          example: INFO
+    LoggersResponse:
+      type: object
+      properties:
+        levels:
+          type: array
+          items:
+            type: string
+          example:
+          - TRACE
+          - DEBUG
+          - INFO
+          - WARN
+          - ERROR
+        loggers:
+          type: object
+          additionalProperties:
+            $ref: '#/components/schemas/LoggerResponse'
+    LoggerLevelRequest:
+      type: object
+      properties:
+        configuredLevel:
+          type: string
+          nullable: true
+          enum:
+          - TRACE
+          - DEBUG
+          - INFO
+          - WARN
+          - ERROR
+          - 'OFF'
+          - null
+      required:
+      - configuredLevel
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+externalDocs:
+  description: Spring Boot Actuator Reference Documentation
+  url: https://docs.spring.io/spring-boot/docs/current/reference/html/actuator.html

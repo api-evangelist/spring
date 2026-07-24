@@ -1,0 +1,183 @@
+openapi: 3.1.0
+info:
+  title: Spring Boot Actuator Beans Metadata API
+  description: The Spring Boot Actuator API provides production-ready endpoints for monitoring and managing Spring Boot applications. It exposes health checks, metrics, environment information, configuration properties, thread dumps, HTTP traces, application info, and shutdown capabilities via RESTful endpoints. The Actuator supports customizable security, endpoint exposure controls, and integration with monitoring systems like Prometheus, Datadog, and CloudWatch. Used by operators and SREs to observe and manage deployed Spring Boot services.
+  version: 3.x
+  contact:
+    name: Spring Team
+    url: https://spring.io/support
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0
+servers:
+- url: http://localhost:8080/actuator
+  description: Default Local Spring Boot Actuator Endpoint
+security:
+- basicAuth: []
+tags:
+- name: Metadata
+  description: Discover available project options and capabilities
+paths:
+  /:
+    get:
+      operationId: getMetadata
+      summary: Get Initializr Metadata
+      description: Returns the full metadata document describing all available project types, Spring Boot versions, dependencies, languages, Java versions, packaging options, and their defaults. Clients use this to present choices to the user before generating a project.
+      tags:
+      - Metadata
+      responses:
+        '200':
+          description: Spring Initializr metadata
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InitializrMetadata'
+            application/vnd.initializr.v2.2+json:
+              schema:
+                $ref: '#/components/schemas/InitializrMetadata'
+  /dependencies:
+    get:
+      operationId: getDependencies
+      summary: Get Available Dependencies
+      description: Returns the list of available Spring Boot starter dependencies that can be added to a generated project. Results can be filtered by Spring Boot version compatibility.
+      tags:
+      - Metadata
+      parameters:
+      - name: bootVersion
+        in: query
+        required: false
+        description: Filter dependencies by Spring Boot version compatibility
+        schema:
+          type: string
+        example: 3.4.5
+      responses:
+        '200':
+          description: Available dependencies
+          content:
+            application/vnd.initializr.v2.2+json:
+              schema:
+                $ref: '#/components/schemas/DependenciesResponse'
+components:
+  schemas:
+    MetadataOption:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        default:
+          type: boolean
+    DependenciesResponse:
+      type: object
+      properties:
+        bootVersion:
+          type: string
+          example: 3.4.5
+        dependencies:
+          type: object
+          additionalProperties:
+            $ref: '#/components/schemas/Dependency'
+    InitializrMetadata:
+      type: object
+      description: Full Spring Initializr capabilities metadata
+      properties:
+        dependencies:
+          type: object
+          description: Available dependencies grouped by category
+          properties:
+            type:
+              type: string
+              example: hierarchical-multi-select
+            values:
+              type: array
+              items:
+                $ref: '#/components/schemas/DependencyGroup'
+        type:
+          type: object
+          description: Project type options
+          properties:
+            type:
+              type: string
+            default:
+              type: string
+            values:
+              type: array
+              items:
+                $ref: '#/components/schemas/MetadataOption'
+        bootVersion:
+          type: object
+          properties:
+            type:
+              type: string
+            default:
+              type: string
+            values:
+              type: array
+              items:
+                $ref: '#/components/schemas/MetadataOption'
+        packaging:
+          type: object
+          properties:
+            type:
+              type: string
+            default:
+              type: string
+            values:
+              type: array
+              items:
+                $ref: '#/components/schemas/MetadataOption'
+        javaVersion:
+          type: object
+          properties:
+            type:
+              type: string
+            default:
+              type: string
+            values:
+              type: array
+              items:
+                $ref: '#/components/schemas/MetadataOption'
+        language:
+          type: object
+          properties:
+            type:
+              type: string
+            default:
+              type: string
+            values:
+              type: array
+              items:
+                $ref: '#/components/schemas/MetadataOption'
+    DependencyGroup:
+      type: object
+      properties:
+        name:
+          type: string
+          example: Web
+        values:
+          type: array
+          items:
+            $ref: '#/components/schemas/Dependency'
+    Dependency:
+      type: object
+      properties:
+        id:
+          type: string
+          example: web
+        name:
+          type: string
+          example: Spring Web
+        description:
+          type: string
+          example: Build web, including RESTful, applications using Spring MVC.
+        compatibilityRange:
+          type: string
+          example: '[3.0.0,4.0.0-M1)'
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+externalDocs:
+  description: Spring Boot Actuator Reference Documentation
+  url: https://docs.spring.io/spring-boot/docs/current/reference/html/actuator.html

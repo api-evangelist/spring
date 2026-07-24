@@ -1,0 +1,100 @@
+openapi: 3.1.0
+info:
+  title: Spring Boot Actuator Beans Environment API
+  description: The Spring Boot Actuator API provides production-ready endpoints for monitoring and managing Spring Boot applications. It exposes health checks, metrics, environment information, configuration properties, thread dumps, HTTP traces, application info, and shutdown capabilities via RESTful endpoints. The Actuator supports customizable security, endpoint exposure controls, and integration with monitoring systems like Prometheus, Datadog, and CloudWatch. Used by operators and SREs to observe and manage deployed Spring Boot services.
+  version: 3.x
+  contact:
+    name: Spring Team
+    url: https://spring.io/support
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0
+servers:
+- url: http://localhost:8080/actuator
+  description: Default Local Spring Boot Actuator Endpoint
+security:
+- basicAuth: []
+tags:
+- name: Environment
+  description: Environment properties and configuration
+paths:
+  /env:
+    get:
+      operationId: getEnvironment
+      summary: Get Environment Properties
+      description: Returns a snapshot of the application's environment including all property sources (application.properties, system environment, JVM system properties, etc.). Sensitive values are masked.
+      tags:
+      - Environment
+      responses:
+        '200':
+          description: Environment properties
+          content:
+            application/vnd.spring-boot.actuator.v3+json:
+              schema:
+                $ref: '#/components/schemas/EnvironmentResponse'
+  /env/{toMatch}:
+    get:
+      operationId: getEnvironmentProperty
+      summary: Get Environment Property
+      description: Returns a specific environment property value by key.
+      tags:
+      - Environment
+      parameters:
+      - name: toMatch
+        in: path
+        required: true
+        description: Property key to look up
+        schema:
+          type: string
+        example: spring.application.name
+      responses:
+        '200':
+          description: Property value from environment
+          content:
+            application/vnd.spring-boot.actuator.v3+json:
+              schema:
+                $ref: '#/components/schemas/EnvironmentPropertyResponse'
+components:
+  schemas:
+    EnvironmentPropertyResponse:
+      type: object
+      description: Single environment property
+      properties:
+        property:
+          type: object
+          properties:
+            source:
+              type: string
+            value:
+              type: string
+        activeContexts:
+          type: array
+          items:
+            type: string
+    EnvironmentResponse:
+      type: object
+      description: Application environment snapshot
+      properties:
+        activeProfiles:
+          type: array
+          items:
+            type: string
+          example:
+          - production
+        propertySources:
+          type: array
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+              properties:
+                type: object
+                additionalProperties: true
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+externalDocs:
+  description: Spring Boot Actuator Reference Documentation
+  url: https://docs.spring.io/spring-boot/docs/current/reference/html/actuator.html

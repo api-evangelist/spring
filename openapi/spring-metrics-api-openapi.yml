@@ -1,0 +1,124 @@
+openapi: 3.1.0
+info:
+  title: Spring Boot Actuator Beans Metrics API
+  description: The Spring Boot Actuator API provides production-ready endpoints for monitoring and managing Spring Boot applications. It exposes health checks, metrics, environment information, configuration properties, thread dumps, HTTP traces, application info, and shutdown capabilities via RESTful endpoints. The Actuator supports customizable security, endpoint exposure controls, and integration with monitoring systems like Prometheus, Datadog, and CloudWatch. Used by operators and SREs to observe and manage deployed Spring Boot services.
+  version: 3.x
+  contact:
+    name: Spring Team
+    url: https://spring.io/support
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0
+servers:
+- url: http://localhost:8080/actuator
+  description: Default Local Spring Boot Actuator Endpoint
+security:
+- basicAuth: []
+tags:
+- name: Metrics
+  description: Application performance and operational metrics
+paths:
+  /metrics:
+    get:
+      operationId: listMetrics
+      summary: List Available Metrics
+      description: Returns a list of all available metric names registered in the application.
+      tags:
+      - Metrics
+      responses:
+        '200':
+          description: List of available metric names
+          content:
+            application/vnd.spring-boot.actuator.v3+json:
+              schema:
+                $ref: '#/components/schemas/MetricNamesResponse'
+  /metrics/{requiredMetricName}:
+    get:
+      operationId: getMetric
+      summary: Get Metric Value
+      description: Returns the current value(s) for a specific metric. Metrics are identified by their dot-notation name (e.g., jvm.memory.used, http.server.requests). Results can be filtered by tag using the tag query parameter.
+      tags:
+      - Metrics
+      parameters:
+      - name: requiredMetricName
+        in: path
+        required: true
+        description: Metric name in dot notation
+        schema:
+          type: string
+        example: jvm.memory.used
+      - name: tag
+        in: query
+        required: false
+        description: 'Tag filter in KEY:VALUE format (can be repeated for multiple tags). Example: area:heap or area:heap&tag=id:G1+Eden+Space'
+        schema:
+          type: string
+        example: area:heap
+      responses:
+        '200':
+          description: Metric value and measurements
+          content:
+            application/vnd.spring-boot.actuator.v3+json:
+              schema:
+                $ref: '#/components/schemas/MetricResponse'
+components:
+  schemas:
+    MetricResponse:
+      type: object
+      description: Metric value response
+      properties:
+        name:
+          type: string
+          description: Metric name
+          example: jvm.memory.used
+        description:
+          type: string
+          description: Human-readable metric description
+        baseUnit:
+          type: string
+          description: Metric base unit
+          example: bytes
+        measurements:
+          type: array
+          description: Metric measurement values
+          items:
+            type: object
+            properties:
+              statistic:
+                type: string
+                example: VALUE
+              value:
+                type: number
+                example: 123456789
+        availableTags:
+          type: array
+          description: Available tags for filtering
+          items:
+            type: object
+            properties:
+              tag:
+                type: string
+              values:
+                type: array
+                items:
+                  type: string
+    MetricNamesResponse:
+      type: object
+      properties:
+        names:
+          type: array
+          description: Available metric names
+          items:
+            type: string
+          example:
+          - jvm.memory.used
+          - jvm.memory.max
+          - http.server.requests
+          - process.cpu.usage
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+externalDocs:
+  description: Spring Boot Actuator Reference Documentation
+  url: https://docs.spring.io/spring-boot/docs/current/reference/html/actuator.html

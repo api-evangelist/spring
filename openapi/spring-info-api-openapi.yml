@@ -1,0 +1,83 @@
+openapi: 3.1.0
+info:
+  title: Spring Boot Actuator Beans Info API
+  description: The Spring Boot Actuator API provides production-ready endpoints for monitoring and managing Spring Boot applications. It exposes health checks, metrics, environment information, configuration properties, thread dumps, HTTP traces, application info, and shutdown capabilities via RESTful endpoints. The Actuator supports customizable security, endpoint exposure controls, and integration with monitoring systems like Prometheus, Datadog, and CloudWatch. Used by operators and SREs to observe and manage deployed Spring Boot services.
+  version: 3.x
+  contact:
+    name: Spring Team
+    url: https://spring.io/support
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0
+servers:
+- url: http://localhost:8080/actuator
+  description: Default Local Spring Boot Actuator Endpoint
+security:
+- basicAuth: []
+tags:
+- name: Info
+  description: Application information and build metadata
+paths:
+  /info:
+    get:
+      operationId: getInfo
+      summary: Get Application Info
+      description: Returns application information including build details, Git commit info, Java runtime version, and any custom info contributors registered in the application context.
+      tags:
+      - Info
+      responses:
+        '200':
+          description: Application information
+          content:
+            application/vnd.spring-boot.actuator.v3+json:
+              schema:
+                $ref: '#/components/schemas/InfoResponse'
+components:
+  schemas:
+    InfoResponse:
+      type: object
+      description: Application information
+      properties:
+        build:
+          type: object
+          properties:
+            artifact:
+              type: string
+              example: my-app
+            group:
+              type: string
+              example: com.example
+            version:
+              type: string
+              example: 1.0.0
+            time:
+              type: string
+              format: date-time
+        git:
+          type: object
+          properties:
+            branch:
+              type: string
+              example: main
+            commit:
+              type: object
+              properties:
+                id:
+                  type: string
+                time:
+                  type: string
+        java:
+          type: object
+          properties:
+            version:
+              type: string
+              example: '21'
+            vendor:
+              type: object
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+externalDocs:
+  description: Spring Boot Actuator Reference Documentation
+  url: https://docs.spring.io/spring-boot/docs/current/reference/html/actuator.html
