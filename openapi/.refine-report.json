@@ -1,0 +1,32 @@
+{
+  "provider": "spring",
+  "sources": [
+    "spring-beans-api-openapi.yml",
+    "spring-environment-api-openapi.yml",
+    "spring-health-api-openapi.yml",
+    "spring-info-api-openapi.yml",
+    "spring-loggers-api-openapi.yml",
+    "spring-mappings-api-openapi.yml",
+    "spring-metadata-api-openapi.yml",
+    "spring-metrics-api-openapi.yml",
+    "spring-project-generation-api-openapi.yml",
+    "spring-threads-api-openapi.yml"
+  ],
+  "outputs": [
+    "spring-beans-api-openapi.yml",
+    "spring-environment-api-openapi.yml",
+    "spring-health-api-openapi.yml",
+    "spring-info-api-openapi.yml",
+    "spring-loggers-api-openapi.yml",
+    "spring-mappings-api-openapi.yml",
+    "spring-metadata-api-openapi.yml",
+    "spring-metrics-api-openapi.yml",
+    "spring-project-generation-api-openapi.yml",
+    "spring-threads-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
