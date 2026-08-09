@@ -1,11 +1,10 @@
 aid: spring
 name: Spring Framework
-description: >-
-  Spring is the leading open-source application framework for Java. The Spring ecosystem provides a comprehensive
-  programming and configuration model for modern Java-based enterprise applications, covering web MVC, data access,
-  security, messaging, cloud-native patterns, and AI integrations. Spring Boot enables rapid application development
-  with embedded servers and auto-configuration. Spring is maintained by VMware and hosted under the Spring Projects
-  GitHub organization.
+description: Spring is the leading open-source application framework for Java. The Spring ecosystem provides
+  a comprehensive programming and configuration model for modern Java-based enterprise applications, covering
+  web MVC, data access, security, messaging, cloud-native patterns, and AI integrations. Spring Boot enables
+  rapid application development with embedded servers and auto-configuration. Spring is maintained by
+  VMware and hosted under the Spring Projects GitHub organization.
 accessModel:
   pricing: freemium
   onboarding: self-serve
@@ -22,11 +21,10 @@ accessModel:
 image: https://spring.io/img/spring-logo.svg
 url: https://spring.io
 created: '2026-05-02'
-modified: '2026-05-19'
+modified: '2026-08-08'
 apis:
 - name: Spring Data REST API
-  description: >-
-    Spring Data REST automatically exports Spring Data repository interfaces as RESTful hypermedia-driven
+  description: Spring Data REST automatically exports Spring Data repository interfaces as RESTful hypermedia-driven
     APIs using HAL (Hypertext Application Language). It enables CRUD operations on domain entities through
     discoverable REST endpoints without writing controller code. The API supports HATEOAS linking, projections,
     validation, and event hooks.
@@ -48,11 +46,10 @@ apis:
   - type: HALBrowser
     url: https://docs.spring.io/spring-data/rest/docs/current/reference/html/#tools.hal-explorer
 - name: Spring Cloud Gateway API
-  description: >-
-    Spring Cloud Gateway provides an API Gateway built on Spring WebFlux and Reactor. It offers route
-    configuration, request/response filtering, load balancing, circuit breaking, rate limiting, and retry
-    capabilities via a fluent Java DSL or YAML configuration. The Actuator endpoint exposes live route
-    and filter information.
+  description: Spring Cloud Gateway provides an API Gateway built on Spring WebFlux and Reactor. It offers
+    route configuration, request/response filtering, load balancing, circuit breaking, rate limiting,
+    and retry capabilities via a fluent Java DSL or YAML configuration. The Actuator endpoint exposes
+    live route and filter information.
   humanUrl: https://spring.io/projects/spring-cloud-gateway
   baseUrl: https://api.spring.io/gateway
   tags:
@@ -67,12 +64,10 @@ apis:
   - type: GitHub
     url: https://github.com/spring-cloud/spring-cloud-gateway
   - type: Samples
-    url: >-
-      https://github.com/spring-cloud/spring-cloud-gateway/tree/main/spring-cloud-gateway-sample
+    url: https://github.com/spring-cloud/spring-cloud-gateway/tree/main/spring-cloud-gateway-sample
 - name: Spring Authorization Server API
-  description: >-
-    Spring Authorization Server provides a full OAuth 2.1 and OpenID Connect 1.0 authorization server
-    implementation built on Spring Security. It supports authorization code flow, client credentials,
+  description: Spring Authorization Server provides a full OAuth 2.1 and OpenID Connect 1.0 authorization
+    server implementation built on Spring Security. It supports authorization code flow, client credentials,
     device authorization, token introspection, and token revocation. Exposes standard OAuth 2 endpoints.
   humanUrl: https://spring.io/projects/spring-authorization-server
   baseUrl: https://api.spring.io/oauth
@@ -89,9 +84,8 @@ apis:
   - type: OAuthGuide
     url: https://spring.io/guides/tutorials/spring-boot-oauth2/
 - name: Spring AI API
-  description: >-
-    Spring AI provides a Spring-friendly API and abstractions for building AI-powered applications. It
-    offers a unified ChatClient API for interacting with AI models (OpenAI, Anthropic, Google Gemini,
+  description: Spring AI provides a Spring-friendly API and abstractions for building AI-powered applications.
+    It offers a unified ChatClient API for interacting with AI models (OpenAI, Anthropic, Google Gemini,
     Ollama, and others), along with vector store integrations, prompt templates, output parsers, and function
     calling support. Follows portable, modular Spring design principles.
   humanUrl: https://spring.io/projects/spring-ai
@@ -450,43 +444,51 @@ apis:
   - type: JSONLD
     url: json-ld/spring-context.jsonld
 common:
-  - type: AgenticAccess
-    url: agentic-access/spring-agentic-access.yml
-  - type: VulnerabilityDisclosure
-    url: security/spring-vulnerability-disclosure.yml
-  - type: DomainSecurity
-    url: security/spring-domain-security.yml
-  - type: Authentication
-    url: authentication/spring-authentication.yml
-  - type: Website
-    url: https://spring.io
-  - type: GitHub
-    url: https://github.com/spring-projects
-  - type: Documentation
-    url: https://docs.spring.io
-  - type: Blog
-    url: https://spring.io/blog
-  - type: Community
-    url: https://spring.io/community
-  - type: Guides
-    url: https://spring.io/guides
-  - type: Events
-    url: https://spring.io/events
-  - type: Maven Repository
-    url: https://mvnrepository.com/artifact/org.springframework
-  - type: ReleaseNotes
-    url: https://github.com/spring-projects/spring-framework/releases
+- type: AgenticAccess
+  url: agentic-access/spring-agentic-access.yml
+- type: VulnerabilityDisclosure
+  url: security/spring-vulnerability-disclosure.yml
+- type: DomainSecurity
+  url: security/spring-domain-security.yml
+- type: Authentication
+  url: authentication/spring-authentication.yml
+- type: Website
+  url: https://spring.io
+- type: GitHub
+  url: https://github.com/spring-projects
+- type: Documentation
+  url: https://docs.spring.io
+- type: Blog
+  url: https://spring.io/blog
+- type: Community
+  url: https://spring.io/community
+- type: Guides
+  url: https://spring.io/guides
+- type: Events
+  url: https://spring.io/events
+- type: Maven Repository
+  url: https://mvnrepository.com/artifact/org.springframework
+- type: ReleaseNotes
+  url: https://github.com/spring-projects/spring-framework/releases
+- type: GitHubOrganization
+  url: https://github.com/spring-cloud
+- type: StackOverflow
+  url: https://stackoverflow.com/questions/tagged/spring-cloud
+- type: Vocabulary
+  url: vocabulary/spring-vocabulary.yml
 maintainers:
-  - name: Spring Team at VMware
-    email: spring-team@vmware.com
-    url: https://spring.io/team
+- name: Spring Team at VMware
+  email: spring-team@vmware.com
+  url: https://spring.io/team
 tags:
-  - AI
-  - Cloud Native
-  - Enterprise
-  - Framework
-  - Java
-  - Microservices
-  - Open Source
-  - REST
-  - Spring Boot
+- AI
+- Cloud Native
+- Enterprise
+- Framework
+- Java
+- Microservices
+- Open Source
+- REST
+- Spring Boot
+x-merged-from:
+- spring-cloud
