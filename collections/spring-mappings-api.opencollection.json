@@ -1,0 +1,36 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Spring Boot Actuator Beans Mappings API",
+    "version": "3.x"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Mappings",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Request Mappings",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8080/actuator/mappings"
+          },
+          "docs": "Returns all @RequestMapping paths, handler methods, and filters registered in the Spring application context. Useful for API discovery and debugging."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

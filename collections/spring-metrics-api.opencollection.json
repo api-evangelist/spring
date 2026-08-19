@@ -1,0 +1,61 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Spring Boot Actuator Beans Metrics API",
+    "version": "3.x"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Metrics",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Available Metrics",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8080/actuator/metrics"
+          },
+          "docs": "Returns a list of all available metric names registered in the application."
+        },
+        {
+          "info": {
+            "name": "Get Metric Value",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8080/actuator/metrics/:requiredMetricName",
+            "params": [
+              {
+                "name": "requiredMetricName",
+                "value": "jvm.memory.used",
+                "type": "path",
+                "description": "Metric name in dot notation"
+              },
+              {
+                "name": "tag",
+                "value": "area:heap",
+                "type": "query",
+                "description": "Tag filter in KEY:VALUE format (can be repeated for multiple tags). Example: area:heap or area:heap&tag=id:G1+Eden+Space"
+              }
+            ]
+          },
+          "docs": "Returns the current value(s) for a specific metric. Metrics are identified by their dot-notation name (e.g., jvm.memory.used, http.server.requests). Results can be filtered by tag using the tag query parameter."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

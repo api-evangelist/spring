@@ -1,0 +1,36 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Spring Boot Actuator Beans Threads API",
+    "version": "3.x"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Threads",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Thread Dump",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8080/actuator/threaddump"
+          },
+          "docs": "Returns a snapshot of all threads running in the JVM, including their state, stack traces, and lock information. Useful for diagnosing deadlocks or performance issues."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

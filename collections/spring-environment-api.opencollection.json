@@ -1,0 +1,55 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Spring Boot Actuator Beans Environment API",
+    "version": "3.x"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Environment",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Environment Properties",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8080/actuator/env"
+          },
+          "docs": "Returns a snapshot of the application's environment including all property sources (application.properties, system environment, JVM system properties, etc.). Sensitive values are masked."
+        },
+        {
+          "info": {
+            "name": "Get Environment Property",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8080/actuator/env/:toMatch",
+            "params": [
+              {
+                "name": "toMatch",
+                "value": "spring.application.name",
+                "type": "path",
+                "description": "Property key to look up"
+              }
+            ]
+          },
+          "docs": "Returns a specific environment property value by key."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

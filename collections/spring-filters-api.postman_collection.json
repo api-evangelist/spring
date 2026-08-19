@@ -1,0 +1,169 @@
+{
+  "item": [
+    {
+      "id": "6516d242-f0c1-4f23-9fb3-af9f5f3836e0",
+      "name": "Filters",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "d2e9b2a9-78c0-4e4c-9bae-312d7eb064af",
+          "name": "Spring Cloud List all global filters",
+          "request": {
+            "name": "Spring Cloud List all global filters",
+            "description": {
+              "content": "Returns all global filters and their order",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "globalfilters"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "63b0785a-fd21-4b75-8b7d-43e0e691c8b1",
+              "name": "Global filter list with ordering",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "globalfilters"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"key_0\": 3073,\n  \"key_1\": 4757\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4515af03-b05f-4e6f-81ba-8be427b373b2",
+          "name": "Spring Cloud List all available route filter factories",
+          "request": {
+            "name": "Spring Cloud List all available route filter factories",
+            "description": {},
+            "url": {
+              "path": [
+                "routefilters"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "eaefea13-9115-41ee-a606-8419361a7950",
+              "name": "Available GatewayFilter factories",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "routefilters"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"key_0\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "http://localhost:8080/actuator/gateway",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "b86b0405-6fb9-4b2a-be9d-8243b2601ef3",
+    "name": "Spring Cloud Gateway Actuator Filters API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Actuator endpoints exposed by Spring Cloud Gateway for managing routes, global filters, and route filters at runtime. These endpoints are available under the /actuator/gateway path.\n\nContact Support:\n Name: Spring Cloud Team",
+      "type": "text/plain"
+    }
+  }
+}

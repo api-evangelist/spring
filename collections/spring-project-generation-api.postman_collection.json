@@ -1,0 +1,445 @@
+{
+  "item": [
+    {
+      "id": "cd58e2ff-4867-4594-aad5-536af0111a8f",
+      "name": "Project Generation",
+      "description": {
+        "content": "Generate new Spring Boot project archives",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "78b100f7-4b6d-4876-b8ca-1b77dfcc5c9a",
+          "name": "Generate Project ZIP",
+          "request": {
+            "name": "Generate Project ZIP",
+            "description": {
+              "content": "Generates a new Spring Boot project and returns it as a ZIP archive. Specify the project group, artifact, dependencies, Java version, Spring Boot version, and other options via query parameters.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "starter.zip"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "type",
+                  "value": "maven-project",
+                  "description": "Project type (build system)"
+                },
+                {
+                  "disabled": false,
+                  "key": "language",
+                  "value": "java",
+                  "description": "Programming language"
+                },
+                {
+                  "disabled": false,
+                  "key": "bootVersion",
+                  "value": "<string>",
+                  "description": "Spring Boot version"
+                },
+                {
+                  "disabled": false,
+                  "key": "baseDir",
+                  "value": "<string>",
+                  "description": "Base directory for the generated project archive"
+                },
+                {
+                  "disabled": false,
+                  "key": "groupId",
+                  "value": "com.example",
+                  "description": "Maven group ID"
+                },
+                {
+                  "disabled": false,
+                  "key": "artifactId",
+                  "value": "demo",
+                  "description": "Maven artifact ID / project name"
+                },
+                {
+                  "disabled": false,
+                  "key": "name",
+                  "value": "demo",
+                  "description": "Project name"
+                },
+                {
+                  "disabled": false,
+                  "key": "description",
+                  "value": "Demo project for Spring Boot",
+                  "description": "Project description"
+                },
+                {
+                  "disabled": false,
+                  "key": "packageName",
+                  "value": "com.example.demo",
+                  "description": "Root Java package name"
+                },
+                {
+                  "disabled": false,
+                  "key": "packaging",
+                  "value": "jar",
+                  "description": "Packaging type"
+                },
+                {
+                  "disabled": false,
+                  "key": "javaVersion",
+                  "value": "21",
+                  "description": "Java version"
+                },
+                {
+                  "disabled": false,
+                  "key": "dependencies",
+                  "value": "<string>",
+                  "description": "Comma-separated list of dependency IDs to include (e.g., web,data-jpa,security,actuator)"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/zip"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "37061e59-a6ec-4d66-81d0-59af63d5ee2d",
+              "name": "ZIP archive of the generated project",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "starter.zip"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "type",
+                      "value": "maven-project"
+                    },
+                    {
+                      "key": "language",
+                      "value": "java"
+                    },
+                    {
+                      "key": "bootVersion",
+                      "value": "3.4.5"
+                    },
+                    {
+                      "key": "baseDir",
+                      "value": "demo"
+                    },
+                    {
+                      "key": "groupId",
+                      "value": "com.example"
+                    },
+                    {
+                      "key": "artifactId",
+                      "value": "demo"
+                    },
+                    {
+                      "key": "name",
+                      "value": "demo"
+                    },
+                    {
+                      "key": "description",
+                      "value": "Demo project for Spring Boot"
+                    },
+                    {
+                      "key": "packageName",
+                      "value": "com.example.demo"
+                    },
+                    {
+                      "key": "packaging",
+                      "value": "jar"
+                    },
+                    {
+                      "key": "javaVersion",
+                      "value": "21"
+                    },
+                    {
+                      "key": "dependencies",
+                      "value": "web,data-jpa,security,actuator,lombok"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/zip"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/zip"
+                }
+              ],
+              "body": "string",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "359ee88f-3247-4a07-b2bc-e6868ea8a94c",
+          "name": "Generate Project TGZ",
+          "request": {
+            "name": "Generate Project TGZ",
+            "description": {
+              "content": "Generates a new Spring Boot project and returns it as a tar.gz archive. Accepts the same query parameters as the ZIP endpoint.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "starter.tgz"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "type",
+                  "value": "maven-project",
+                  "description": "Project type (build system)"
+                },
+                {
+                  "disabled": false,
+                  "key": "language",
+                  "value": "java",
+                  "description": "Programming language"
+                },
+                {
+                  "disabled": false,
+                  "key": "bootVersion",
+                  "value": "<string>",
+                  "description": "Spring Boot version"
+                },
+                {
+                  "disabled": false,
+                  "key": "baseDir",
+                  "value": "<string>",
+                  "description": "Base directory for the generated project archive"
+                },
+                {
+                  "disabled": false,
+                  "key": "groupId",
+                  "value": "com.example",
+                  "description": "Maven group ID"
+                },
+                {
+                  "disabled": false,
+                  "key": "artifactId",
+                  "value": "demo",
+                  "description": "Maven artifact ID / project name"
+                },
+                {
+                  "disabled": false,
+                  "key": "name",
+                  "value": "demo",
+                  "description": "Project name"
+                },
+                {
+                  "disabled": false,
+                  "key": "description",
+                  "value": "Demo project for Spring Boot",
+                  "description": "Project description"
+                },
+                {
+                  "disabled": false,
+                  "key": "packageName",
+                  "value": "com.example.demo",
+                  "description": "Root Java package name"
+                },
+                {
+                  "disabled": false,
+                  "key": "packaging",
+                  "value": "jar",
+                  "description": "Packaging type"
+                },
+                {
+                  "disabled": false,
+                  "key": "javaVersion",
+                  "value": "21",
+                  "description": "Java version"
+                },
+                {
+                  "disabled": false,
+                  "key": "dependencies",
+                  "value": "<string>",
+                  "description": "Comma-separated list of dependency IDs to include (e.g., web,data-jpa,security,actuator)"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/x-tar"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "1c460d37-fb31-4b48-8d3e-1e6d30d7cbc7",
+              "name": "TGZ archive of the generated project",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "starter.tgz"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "type",
+                      "value": "maven-project"
+                    },
+                    {
+                      "key": "language",
+                      "value": "java"
+                    },
+                    {
+                      "key": "bootVersion",
+                      "value": "3.4.5"
+                    },
+                    {
+                      "key": "baseDir",
+                      "value": "demo"
+                    },
+                    {
+                      "key": "groupId",
+                      "value": "com.example"
+                    },
+                    {
+                      "key": "artifactId",
+                      "value": "demo"
+                    },
+                    {
+                      "key": "name",
+                      "value": "demo"
+                    },
+                    {
+                      "key": "description",
+                      "value": "Demo project for Spring Boot"
+                    },
+                    {
+                      "key": "packageName",
+                      "value": "com.example.demo"
+                    },
+                    {
+                      "key": "packaging",
+                      "value": "jar"
+                    },
+                    {
+                      "key": "javaVersion",
+                      "value": "21"
+                    },
+                    {
+                      "key": "dependencies",
+                      "value": "web,data-jpa,security,actuator,lombok"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/x-tar"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/x-tar"
+                }
+              ],
+              "body": "string",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "http://localhost:8080/actuator",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "24a0aa12-fc2a-4b4a-bd4f-7499b4de3731",
+    "name": "Spring Boot Actuator Beans Project Generation API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Spring Boot Actuator API provides production-ready endpoints for monitoring and managing Spring Boot applications. It exposes health checks, metrics, environment information, configuration properties, thread dumps, HTTP traces, application info, and shutdown capabilities via RESTful endpoints. The Actuator supports customizable security, endpoint exposure controls, and integration with monitoring systems like Prometheus, Datadog, and CloudWatch. Used by operators and SREs to observe and manage deployed Spring Boot services.\n\nContact Support:\n Name: Spring Team",
+      "type": "text/plain"
+    }
+  }
+}

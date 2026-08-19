@@ -1,0 +1,40 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Spring Cloud Gateway Actuator Filters API",
+    "version": "4.1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Filters",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Spring Cloud List all global filters",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8080/actuator/gateway/globalfilters"
+          },
+          "docs": "Returns all global filters and their order"
+        },
+        {
+          "info": {
+            "name": "Spring Cloud List all available route filter factories",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8080/actuator/gateway/routefilters"
+          },
+          "docs": "Spring Cloud List all available route filter factories"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

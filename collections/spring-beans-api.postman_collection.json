@@ -1,0 +1,123 @@
+{
+  "item": [
+    {
+      "id": "8857bc1d-9bb3-429e-8b19-5280dc4df3c4",
+      "name": "Beans",
+      "description": {
+        "content": "Spring application context beans",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "e87c6529-7e42-41d3-bc97-97ac51add1dd",
+          "name": "Get Application Beans",
+          "request": {
+            "name": "Get Application Beans",
+            "description": {
+              "content": "Returns a complete list of Spring beans instantiated in the application context, along with their type, scope, and dependencies.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "beans"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/vnd.spring-boot.actuator.v3+json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "29a630fd-b56d-47d0-8b80-53af9ae77f1b",
+              "name": "Spring application context beans",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "beans"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.spring-boot.actuator.v3+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.spring-boot.actuator.v3+json"
+                }
+              ],
+              "body": "{\n  \"contexts\": {\n    \"key_0\": {\n      \"beans\": {\n        \"key_0\": {\n          \"aliases\": [\n            \"string\",\n            \"string\"\n          ],\n          \"scope\": \"string\",\n          \"type\": \"string\",\n          \"resource\": \"string\",\n          \"dependencies\": [\n            \"string\",\n            \"string\"\n          ]\n        },\n        \"key_1\": {\n          \"aliases\": [\n            \"string\",\n            \"string\"\n          ],\n          \"scope\": \"string\",\n          \"type\": \"string\",\n          \"resource\": \"string\",\n          \"dependencies\": [\n            \"string\",\n            \"string\"\n          ]\n        }\n      }\n    },\n    \"key_1\": {\n      \"beans\": {\n        \"key_0\": {\n          \"aliases\": [\n            \"string\",\n            \"string\"\n          ],\n          \"scope\": \"string\",\n          \"type\": \"string\",\n          \"resource\": \"string\",\n          \"dependencies\": [\n            \"string\",\n            \"string\"\n          ]\n        }\n      }\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "http://localhost:8080/actuator",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "be718cf1-814c-4321-8b01-19ff535fc312",
+    "name": "Spring Boot Actuator Beans API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Spring Boot Actuator API provides production-ready endpoints for monitoring and managing Spring Boot applications. It exposes health checks, metrics, environment information, configuration properties, thread dumps, HTTP traces, application info, and shutdown capabilities via RESTful endpoints. The Actuator supports customizable security, endpoint exposure controls, and integration with monitoring systems like Prometheus, Datadog, and CloudWatch. Used by operators and SREs to observe and manage deployed Spring Boot services.\n\nContact Support:\n Name: Spring Team",
+      "type": "text/plain"
+    }
+  }
+}

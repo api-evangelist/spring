@@ -1,0 +1,123 @@
+{
+  "item": [
+    {
+      "id": "2b94cfb9-aa3b-421e-8edf-0775b07352a8",
+      "name": "Threads",
+      "description": {
+        "content": "Thread dump and virtual thread information",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "5c625e8a-5cd2-4e79-b869-d1906b0b352d",
+          "name": "Get Thread Dump",
+          "request": {
+            "name": "Get Thread Dump",
+            "description": {
+              "content": "Returns a snapshot of all threads running in the JVM, including their state, stack traces, and lock information. Useful for diagnosing deadlocks or performance issues.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "threaddump"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/vnd.spring-boot.actuator.v3+json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c7fce370-cda3-4c11-8556-05533dfce1fd",
+              "name": "JVM thread dump",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "threaddump"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.spring-boot.actuator.v3+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.spring-boot.actuator.v3+json"
+                }
+              ],
+              "body": "{\n  \"threads\": [\n    {\n      \"threadName\": \"string\",\n      \"threadId\": 3887,\n      \"blockedTime\": 279,\n      \"blockedCount\": 5882,\n      \"waitedTime\": 7697,\n      \"waitedCount\": 6962,\n      \"lockName\": \"string\",\n      \"lockOwnerId\": 6348,\n      \"lockOwnerName\": \"string\",\n      \"daemon\": true,\n      \"inNative\": false,\n      \"suspended\": true,\n      \"threadState\": \"TERMINATED\",\n      \"priority\": 5613\n    },\n    {\n      \"threadName\": \"string\",\n      \"threadId\": 2911,\n      \"blockedTime\": 6432,\n      \"blockedCount\": 6320,\n      \"waitedTime\": 6613,\n      \"waitedCount\": 1739,\n      \"lockName\": \"string\",\n      \"lockOwnerId\": 2765,\n      \"lockOwnerName\": \"string\",\n      \"daemon\": true,\n      \"inNative\": true,\n      \"suspended\": false,\n      \"threadState\": \"NEW\",\n      \"priority\": 3091\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "http://localhost:8080/actuator",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "c6207dcc-6b97-4d16-9b09-f093f3dd3060",
+    "name": "Spring Boot Actuator Beans Threads API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Spring Boot Actuator API provides production-ready endpoints for monitoring and managing Spring Boot applications. It exposes health checks, metrics, environment information, configuration properties, thread dumps, HTTP traces, application info, and shutdown capabilities via RESTful endpoints. The Actuator supports customizable security, endpoint exposure controls, and integration with monitoring systems like Prometheus, Datadog, and CloudWatch. Used by operators and SREs to observe and manage deployed Spring Boot services.\n\nContact Support:\n Name: Spring Team",
+      "type": "text/plain"
+    }
+  }
+}

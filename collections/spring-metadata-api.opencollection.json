@@ -1,0 +1,55 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Spring Boot Actuator Beans Metadata API",
+    "version": "3.x"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Metadata",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Initializr Metadata",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8080/actuator/"
+          },
+          "docs": "Returns the full metadata document describing all available project types, Spring Boot versions, dependencies, languages, Java versions, packaging options, and their defaults. Clients use this to present choices to the user before generating a project."
+        },
+        {
+          "info": {
+            "name": "Get Available Dependencies",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8080/actuator/dependencies",
+            "params": [
+              {
+                "name": "bootVersion",
+                "value": "3.4.5",
+                "type": "query",
+                "description": "Filter dependencies by Spring Boot version compatibility"
+              }
+            ]
+          },
+          "docs": "Returns the list of available Spring Boot starter dependencies that can be added to a generated project. Results can be filtered by Spring Boot version compatibility."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

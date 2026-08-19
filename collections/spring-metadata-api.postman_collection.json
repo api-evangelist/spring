@@ -1,0 +1,213 @@
+{
+  "item": [
+    {
+      "id": "3d0deeb9-bb45-421e-9b74-d380cf378ab5",
+      "name": "Metadata",
+      "description": {
+        "content": "Discover available project options and capabilities",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "922448e1-abfd-4e57-9c9a-63599810d78d",
+          "name": "Get Initializr Metadata",
+          "request": {
+            "name": "Get Initializr Metadata",
+            "description": {
+              "content": "Returns the full metadata document describing all available project types, Spring Boot versions, dependencies, languages, Java versions, packaging options, and their defaults. Clients use this to present choices to the user before generating a project.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b9bb4641-6aec-4e37-af6c-36dce3f32f1b",
+              "name": "Spring Initializr metadata",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"dependencies\": {\n    \"type\": \"hierarchical-multi-select\",\n    \"values\": [\n      {\n        \"name\": \"Web\",\n        \"values\": [\n          {\n            \"id\": \"web\",\n            \"name\": \"Spring Web\",\n            \"description\": \"Build web, including RESTful, applications using Spring MVC.\",\n            \"compatibilityRange\": \"[3.0.0,4.0.0-M1)\"\n          },\n          {\n            \"id\": \"web\",\n            \"name\": \"Spring Web\",\n            \"description\": \"Build web, including RESTful, applications using Spring MVC.\",\n            \"compatibilityRange\": \"[3.0.0,4.0.0-M1)\"\n          }\n        ]\n      },\n      {\n        \"name\": \"Web\",\n        \"values\": [\n          {\n            \"id\": \"web\",\n            \"name\": \"Spring Web\",\n            \"description\": \"Build web, including RESTful, applications using Spring MVC.\",\n            \"compatibilityRange\": \"[3.0.0,4.0.0-M1)\"\n          },\n          {\n            \"id\": \"web\",\n            \"name\": \"Spring Web\",\n            \"description\": \"Build web, including RESTful, applications using Spring MVC.\",\n            \"compatibilityRange\": \"[3.0.0,4.0.0-M1)\"\n          }\n        ]\n      }\n    ]\n  },\n  \"type\": {\n    \"type\": \"string\",\n    \"default\": \"string\",\n    \"values\": [\n      {\n        \"id\": \"string\",\n        \"name\": \"string\",\n        \"default\": false\n      },\n      {\n        \"id\": \"string\",\n        \"name\": \"string\",\n        \"default\": true\n      }\n    ]\n  },\n  \"bootVersion\": {\n    \"type\": \"string\",\n    \"default\": \"string\",\n    \"values\": [\n      {\n        \"id\": \"string\",\n        \"name\": \"string\",\n        \"default\": false\n      },\n      {\n        \"id\": \"string\",\n        \"name\": \"string\",\n        \"default\": false\n      }\n    ]\n  },\n  \"packaging\": {\n    \"type\": \"string\",\n    \"default\": \"string\",\n    \"values\": [\n      {\n        \"id\": \"string\",\n        \"name\": \"string\",\n        \"default\": false\n      },\n      {\n        \"id\": \"string\",\n        \"name\": \"string\",\n        \"default\": false\n      }\n    ]\n  },\n  \"javaVersion\": {\n    \"type\": \"string\",\n    \"default\": \"string\",\n    \"values\": [\n      {\n        \"id\": \"string\",\n        \"name\": \"string\",\n        \"default\": false\n      },\n      {\n        \"id\": \"string\",\n        \"name\": \"string\",\n        \"default\": true\n      }\n    ]\n  },\n  \"language\": {\n    \"type\": \"string\",\n    \"default\": \"string\",\n    \"values\": [\n      {\n        \"id\": \"string\",\n        \"name\": \"string\",\n        \"default\": true\n      },\n      {\n        \"id\": \"string\",\n        \"name\": \"string\",\n        \"default\": true\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4dd1142a-8a7b-4a9b-9a85-8abab8766aba",
+          "name": "Get Available Dependencies",
+          "request": {
+            "name": "Get Available Dependencies",
+            "description": {
+              "content": "Returns the list of available Spring Boot starter dependencies that can be added to a generated project. Results can be filtered by Spring Boot version compatibility.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "dependencies"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "bootVersion",
+                  "value": "<string>",
+                  "description": "Filter dependencies by Spring Boot version compatibility"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/vnd.initializr.v2.2+json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e8e8651b-a6c8-4ec6-91ec-3907d24be654",
+              "name": "Available dependencies",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "dependencies"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "bootVersion",
+                      "value": "3.4.5"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.initializr.v2.2+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.initializr.v2.2+json"
+                }
+              ],
+              "body": "{\n  \"bootVersion\": \"3.4.5\",\n  \"dependencies\": {\n    \"key_0\": {\n      \"id\": \"web\",\n      \"name\": \"Spring Web\",\n      \"description\": \"Build web, including RESTful, applications using Spring MVC.\",\n      \"compatibilityRange\": \"[3.0.0,4.0.0-M1)\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "http://localhost:8080/actuator",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "e2b67d8c-cee0-43f8-8df4-f7e0c35c5ca0",
+    "name": "Spring Boot Actuator Beans Metadata API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Spring Boot Actuator API provides production-ready endpoints for monitoring and managing Spring Boot applications. It exposes health checks, metrics, environment information, configuration properties, thread dumps, HTTP traces, application info, and shutdown capabilities via RESTful endpoints. The Actuator supports customizable security, endpoint exposure controls, and integration with monitoring systems like Prometheus, Datadog, and CloudWatch. Used by operators and SREs to observe and manage deployed Spring Boot services.\n\nContact Support:\n Name: Spring Team",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,55 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Spring Boot Actuator Beans Health API",
+    "version": "3.x"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Health",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Health Status",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8080/actuator/health"
+          },
+          "docs": "Returns the health status of the application and all registered health indicators (database, disk space, Redis, Kafka, etc.). The response detail level is controlled by the management.endpoint.health.show-details configuration property."
+        },
+        {
+          "info": {
+            "name": "Get Component Health Status",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8080/actuator/health/:component",
+            "params": [
+              {
+                "name": "component",
+                "value": "db",
+                "type": "path",
+                "description": "Health indicator component name (e.g., db, diskSpace, redis)"
+              }
+            ]
+          },
+          "docs": "Returns health details for a specific health indicator component."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
