@@ -5,6 +5,7 @@ description: Spring is the leading open-source application framework for Java. T
   web MVC, data access, security, messaging, cloud-native patterns, and AI integrations. Spring Boot enables
   rapid application development with embedded servers and auto-configuration. Spring is maintained by
   VMware and hosted under the Spring Projects GitHub organization.
+specificationVersion: '0.23'
 accessModel:
   pricing: freemium
   onboarding: self-serve
