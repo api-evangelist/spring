@@ -74,6 +74,11 @@ apis:
   baseUrl: https://api.spring.io/oauth
   tags:
   - Authorization
+  - Authentication
+  - OpenID Connect
+  - Security
+  tags_raw:
+  - Authorization
   - OAuth 2.0
   - OpenID Connect
   - Security
@@ -92,6 +97,12 @@ apis:
   humanUrl: https://spring.io/projects/spring-ai
   baseUrl: https://api.spring.io/ai
   tags:
+  - Artificial Intelligence
+  - Chatbots
+  - GenAI
+  - LLM
+  - Machine-Learning
+  tags_raw:
   - AI
   - Chatbot
   - GenAI
@@ -482,6 +493,16 @@ maintainers:
   email: spring-team@vmware.com
   url: https://spring.io/team
 tags:
+- Artificial Intelligence
+- Cloud-Native
+- Enterprise
+- Framework
+- Java
+- Microservices
+- Open-Source
+- REST
+- Spring Boot
+tags_raw:
 - AI
 - Cloud Native
 - Enterprise
