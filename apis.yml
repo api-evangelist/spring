@@ -25,7 +25,8 @@ created: '2026-05-02'
 modified: '2026-08-08'
 apis:
 - name: Spring Data REST API
-  description: Spring Data REST automatically exports Spring Data repository interfaces as RESTful hypermedia-driven
+  description: >-
+    Spring Data REST automatically exports Spring Data repository interfaces as RESTful hypermedia-driven
     APIs using HAL (Hypertext Application Language). It enables CRUD operations on domain entities through
     discoverable REST endpoints without writing controller code. The API supports HATEOAS linking, projections,
     validation, and event hooks.
@@ -47,10 +48,11 @@ apis:
   - type: HALBrowser
     url: https://docs.spring.io/spring-data/rest/docs/current/reference/html/#tools.hal-explorer
 - name: Spring Cloud Gateway API
-  description: Spring Cloud Gateway provides an API Gateway built on Spring WebFlux and Reactor. It offers
-    route configuration, request/response filtering, load balancing, circuit breaking, rate limiting,
-    and retry capabilities via a fluent Java DSL or YAML configuration. The Actuator endpoint exposes
-    live route and filter information.
+  description: >-
+    Spring Cloud Gateway provides an API Gateway built on Spring WebFlux and Reactor. It offers route
+    configuration, request/response filtering, load balancing, circuit breaking, rate limiting, and retry
+    capabilities via a fluent Java DSL or YAML configuration. The Actuator endpoint exposes live route
+    and filter information.
   humanUrl: https://spring.io/projects/spring-cloud-gateway
   baseUrl: https://api.spring.io/gateway
   tags:
@@ -65,10 +67,12 @@ apis:
   - type: GitHub
     url: https://github.com/spring-cloud/spring-cloud-gateway
   - type: Samples
-    url: https://github.com/spring-cloud/spring-cloud-gateway/tree/main/spring-cloud-gateway-sample
+    url: >-
+      https://github.com/spring-cloud/spring-cloud-gateway/tree/main/spring-cloud-gateway-sample
 - name: Spring Authorization Server API
-  description: Spring Authorization Server provides a full OAuth 2.1 and OpenID Connect 1.0 authorization
-    server implementation built on Spring Security. It supports authorization code flow, client credentials,
+  description: >-
+    Spring Authorization Server provides a full OAuth 2.1 and OpenID Connect 1.0 authorization server
+    implementation built on Spring Security. It supports authorization code flow, client credentials,
     device authorization, token introspection, and token revocation. Exposes standard OAuth 2 endpoints.
   humanUrl: https://spring.io/projects/spring-authorization-server
   baseUrl: https://api.spring.io/oauth
@@ -90,8 +94,9 @@ apis:
   - type: OAuthGuide
     url: https://spring.io/guides/tutorials/spring-boot-oauth2/
 - name: Spring AI API
-  description: Spring AI provides a Spring-friendly API and abstractions for building AI-powered applications.
-    It offers a unified ChatClient API for interacting with AI models (OpenAI, Anthropic, Google Gemini,
+  description: >-
+    Spring AI provides a Spring-friendly API and abstractions for building AI-powered applications. It
+    offers a unified ChatClient API for interacting with AI models (OpenAI, Anthropic, Google Gemini,
     Ollama, and others), along with vector store integrations, prompt templates, output parsers, and function
     calling support. Follows portable, modular Spring design principles.
   humanUrl: https://spring.io/projects/spring-ai
@@ -455,6 +460,30 @@ apis:
     url: json-structure/spring-boot-application-structure.json
   - type: JSONLD
     url: json-ld/spring-context.jsonld
+- aid: spring:spring-filters-api
+  name: Spring Framework Filters API
+  description: The Filters API from Spring Framework — 2 operation(s) for filters.
+  tags:
+  - Filters
+  properties:
+  - type: OpenAPI
+    url: openapi/spring-filters-api-openapi.yml
+- aid: spring:spring-predicates-api
+  name: Spring Framework Predicates API
+  description: The Predicates API from Spring Framework — 1 operation(s) for predicates.
+  tags:
+  - Predicates
+  properties:
+  - type: OpenAPI
+    url: openapi/spring-predicates-api-openapi.yml
+- aid: spring:spring-routes-api
+  name: Spring Framework Routes API
+  description: The Routes API from Spring Framework — 3 operation(s) for routes.
+  tags:
+  - Routes
+  properties:
+  - type: OpenAPI
+    url: openapi/spring-routes-api-openapi.yml
 common:
 - type: AgenticAccess
   url: agentic-access/spring-agentic-access.yml
