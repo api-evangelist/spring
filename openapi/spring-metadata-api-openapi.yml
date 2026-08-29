@@ -1,19 +1,18 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Spring Boot Actuator Beans Metadata API
-  description: The Spring Boot Actuator API provides production-ready endpoints for monitoring and managing Spring Boot applications. It exposes health checks, metrics, environment information, configuration properties, thread dumps, HTTP traces, application info, and shutdown capabilities via RESTful endpoints. The Actuator supports customizable security, endpoint exposure controls, and integration with monitoring systems like Prometheus, Datadog, and CloudWatch. Used by operators and SREs to observe and manage deployed Spring Boot services.
-  version: 3.x
+  title: Spring Initializr Metadata API
+  description: The Spring Initializr REST API enables programmatic generation of Spring Boot project scaffolding. It provides endpoints to discover available dependencies, project types, Spring Boot versions, and packaging options, as well as generating ready-to-use project archives in zip or tar.gz format. The API is used by IDEs (IntelliJ IDEA, Eclipse Spring Tools Suite, VS Code Spring Boot Extension), CLI tools (Spring CLI), and custom tooling to bootstrap new Spring Boot projects.
+  version: '1.0'
   contact:
     name: Spring Team
-    url: https://spring.io/support
+    url: https://spring.io/team
   license:
     name: Apache 2.0
     url: https://www.apache.org/licenses/LICENSE-2.0
 servers:
-- url: http://localhost:8080/actuator
-  description: Default Local Spring Boot Actuator Endpoint
-security:
-- basicAuth: []
+- url: https://start.spring.io
+  description: Official Spring Initializr Service
+security: []
 tags:
 - name: Metadata
   description: Discover available project options and capabilities
@@ -59,25 +58,6 @@ paths:
                 $ref: '#/components/schemas/DependenciesResponse'
 components:
   schemas:
-    MetadataOption:
-      type: object
-      properties:
-        id:
-          type: string
-        name:
-          type: string
-        default:
-          type: boolean
-    DependenciesResponse:
-      type: object
-      properties:
-        bootVersion:
-          type: string
-          example: 3.4.5
-        dependencies:
-          type: object
-          additionalProperties:
-            $ref: '#/components/schemas/Dependency'
     InitializrMetadata:
       type: object
       description: Full Spring Initializr capabilities metadata
@@ -149,16 +129,6 @@ components:
               type: array
               items:
                 $ref: '#/components/schemas/MetadataOption'
-    DependencyGroup:
-      type: object
-      properties:
-        name:
-          type: string
-          example: Web
-        values:
-          type: array
-          items:
-            $ref: '#/components/schemas/Dependency'
     Dependency:
       type: object
       properties:
@@ -174,10 +144,35 @@ components:
         compatibilityRange:
           type: string
           example: '[3.0.0,4.0.0-M1)'
-  securitySchemes:
-    basicAuth:
-      type: http
-      scheme: basic
+    MetadataOption:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        default:
+          type: boolean
+    DependencyGroup:
+      type: object
+      properties:
+        name:
+          type: string
+          example: Web
+        values:
+          type: array
+          items:
+            $ref: '#/components/schemas/Dependency'
+    DependenciesResponse:
+      type: object
+      properties:
+        bootVersion:
+          type: string
+          example: 3.4.5
+        dependencies:
+          type: object
+          additionalProperties:
+            $ref: '#/components/schemas/Dependency'
 externalDocs:
-  description: Spring Boot Actuator Reference Documentation
-  url: https://docs.spring.io/spring-boot/docs/current/reference/html/actuator.html
+  description: Spring Initializr Reference Documentation
+  url: https://docs.spring.io/initializr/docs/current/reference/html/

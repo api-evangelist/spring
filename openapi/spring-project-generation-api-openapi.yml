@@ -1,19 +1,18 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Spring Boot Actuator Beans Project Generation API
-  description: The Spring Boot Actuator API provides production-ready endpoints for monitoring and managing Spring Boot applications. It exposes health checks, metrics, environment information, configuration properties, thread dumps, HTTP traces, application info, and shutdown capabilities via RESTful endpoints. The Actuator supports customizable security, endpoint exposure controls, and integration with monitoring systems like Prometheus, Datadog, and CloudWatch. Used by operators and SREs to observe and manage deployed Spring Boot services.
-  version: 3.x
+  title: Spring Initializr Project Generation API
+  description: The Spring Initializr REST API enables programmatic generation of Spring Boot project scaffolding. It provides endpoints to discover available dependencies, project types, Spring Boot versions, and packaging options, as well as generating ready-to-use project archives in zip or tar.gz format. The API is used by IDEs (IntelliJ IDEA, Eclipse Spring Tools Suite, VS Code Spring Boot Extension), CLI tools (Spring CLI), and custom tooling to bootstrap new Spring Boot projects.
+  version: '1.0'
   contact:
     name: Spring Team
-    url: https://spring.io/support
+    url: https://spring.io/team
   license:
     name: Apache 2.0
     url: https://www.apache.org/licenses/LICENSE-2.0
 servers:
-- url: http://localhost:8080/actuator
-  description: Default Local Spring Boot Actuator Endpoint
-security:
-- basicAuth: []
+- url: https://start.spring.io
+  description: Official Spring Initializr Service
+security: []
 tags:
 - name: Project Generation
   description: Generate new Spring Boot project archives
@@ -76,62 +75,14 @@ paths:
                 format: binary
 components:
   parameters:
-    baseDir:
-      name: baseDir
+    description:
+      name: description
       in: query
       required: false
-      description: Base directory for the generated project archive
+      description: Project description
       schema:
         type: string
-      example: demo
-    language:
-      name: language
-      in: query
-      required: false
-      description: Programming language
-      schema:
-        type: string
-        enum:
-        - java
-        - kotlin
-        - groovy
-        default: java
-    bootVersion:
-      name: bootVersion
-      in: query
-      required: false
-      description: Spring Boot version
-      schema:
-        type: string
-      example: 3.4.5
-    packageName:
-      name: packageName
-      in: query
-      required: false
-      description: Root Java package name
-      schema:
-        type: string
-        default: com.example.demo
-    type:
-      name: type
-      in: query
-      required: false
-      description: Project type (build system)
-      schema:
-        type: string
-        enum:
-        - maven-project
-        - gradle-project
-        - gradle-project-kotlin
-        default: maven-project
-    name:
-      name: name
-      in: query
-      required: false
-      description: Project name
-      schema:
-        type: string
-        default: demo
+        default: Demo project for Spring Boot
     javaVersion:
       name: javaVersion
       in: query
@@ -144,14 +95,62 @@ components:
         - '17'
         - '11'
         default: '21'
-    description:
-      name: description
+    name:
+      name: name
       in: query
       required: false
-      description: Project description
+      description: Project name
       schema:
         type: string
-        default: Demo project for Spring Boot
+        default: demo
+    type:
+      name: type
+      in: query
+      required: false
+      description: Project type (build system)
+      schema:
+        type: string
+        enum:
+        - maven-project
+        - gradle-project
+        - gradle-project-kotlin
+        default: maven-project
+    dependencies:
+      name: dependencies
+      in: query
+      required: false
+      description: Comma-separated list of dependency IDs to include (e.g., web,data-jpa,security,actuator)
+      schema:
+        type: string
+      example: web,data-jpa,security,actuator,lombok
+    packageName:
+      name: packageName
+      in: query
+      required: false
+      description: Root Java package name
+      schema:
+        type: string
+        default: com.example.demo
+    bootVersion:
+      name: bootVersion
+      in: query
+      required: false
+      description: Spring Boot version
+      schema:
+        type: string
+      example: 3.4.5
+    language:
+      name: language
+      in: query
+      required: false
+      description: Programming language
+      schema:
+        type: string
+        enum:
+        - java
+        - kotlin
+        - groovy
+        default: java
     groupId:
       name: groupId
       in: query
@@ -160,14 +159,6 @@ components:
       schema:
         type: string
         default: com.example
-    artifactId:
-      name: artifactId
-      in: query
-      required: false
-      description: Maven artifact ID / project name
-      schema:
-        type: string
-        default: demo
     packaging:
       name: packaging
       in: query
@@ -179,18 +170,22 @@ components:
         - jar
         - war
         default: jar
-    dependencies:
-      name: dependencies
+    baseDir:
+      name: baseDir
       in: query
       required: false
-      description: Comma-separated list of dependency IDs to include (e.g., web,data-jpa,security,actuator)
+      description: Base directory for the generated project archive
       schema:
         type: string
-      example: web,data-jpa,security,actuator,lombok
-  securitySchemes:
-    basicAuth:
-      type: http
-      scheme: basic
+      example: demo
+    artifactId:
+      name: artifactId
+      in: query
+      required: false
+      description: Maven artifact ID / project name
+      schema:
+        type: string
+        default: demo
 externalDocs:
-  description: Spring Boot Actuator Reference Documentation
-  url: https://docs.spring.io/spring-boot/docs/current/reference/html/actuator.html
+  description: Spring Initializr Reference Documentation
+  url: https://docs.spring.io/initializr/docs/current/reference/html/

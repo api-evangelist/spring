@@ -1,16 +1,9 @@
 {
   "provider": "spring",
   "sources": [
-    "spring-beans-api-openapi.yml",
-    "spring-environment-api-openapi.yml",
-    "spring-health-api-openapi.yml",
-    "spring-info-api-openapi.yml",
-    "spring-loggers-api-openapi.yml",
-    "spring-mappings-api-openapi.yml",
-    "spring-metadata-api-openapi.yml",
-    "spring-metrics-api-openapi.yml",
-    "spring-project-generation-api-openapi.yml",
-    "spring-threads-api-openapi.yml"
+    "_original/spring-boot-actuator-openapi.yml",
+    "_original/spring-gateway-actuator-openapi.yml",
+    "_original/spring-initializr-api-openapi.yml"
   ],
   "outputs": [
     "spring-beans-api-openapi.yml",
@@ -19,14 +12,36 @@
     "spring-info-api-openapi.yml",
     "spring-loggers-api-openapi.yml",
     "spring-mappings-api-openapi.yml",
-    "spring-metadata-api-openapi.yml",
     "spring-metrics-api-openapi.yml",
-    "spring-project-generation-api-openapi.yml",
-    "spring-threads-api-openapi.yml"
+    "spring-threads-api-openapi.yml",
+    "spring-filters-api-openapi.yml",
+    "spring-predicates-api-openapi.yml",
+    "spring-routes-api-openapi.yml",
+    "spring-metadata-api-openapi.yml",
+    "spring-project-generation-api-openapi.yml"
   ],
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (3 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "spring-boot-actuator-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "spring-gateway-actuator-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "spring-initializr-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0"
+  ],
+  "skipped": [
+    "spring-beans-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "spring-environment-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "spring-filters-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "spring-health-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "spring-info-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "spring-loggers-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "spring-mappings-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "spring-metadata-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "spring-metrics-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "spring-predicates-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "spring-project-generation-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "spring-routes-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "spring-threads-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

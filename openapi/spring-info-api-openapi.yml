@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Spring Boot Actuator Beans Info API
+  title: Spring Boot Actuator Info API
   description: The Spring Boot Actuator API provides production-ready endpoints for monitoring and managing Spring Boot applications. It exposes health checks, metrics, environment information, configuration properties, thread dumps, HTTP traces, application info, and shutdown capabilities via RESTful endpoints. The Actuator supports customizable security, endpoint exposure controls, and integration with monitoring systems like Prometheus, Datadog, and CloudWatch. Used by operators and SREs to observe and manage deployed Spring Boot services.
   version: 3.x
   contact:
