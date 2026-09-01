@@ -30,7 +30,7 @@ accessModel:
   - authentication
   generated: '2026-07-22'
   method: derived
-image: https://spring.io/img/spring-logo.svg
+image: ''
 url: https://spring.io
 created: '2026-05-02'
 modified: '2026-08-08'
