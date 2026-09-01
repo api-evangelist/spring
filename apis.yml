@@ -114,7 +114,7 @@ apis:
   baseUrl: https://api.spring.io/ai
   tags:
   - Artificial Intelligence
-  - Chatbot
+  - Chatbots
   - GenAI
   - LLM
   - Machine-Learning
