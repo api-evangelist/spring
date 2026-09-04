@@ -1,10 +1,10 @@
 aid: spring
 name: Spring Framework
-description: Spring is the leading open-source application framework for Java. The Spring ecosystem provides
-  a comprehensive programming and configuration model for modern Java-based enterprise applications, covering
-  web MVC, data access, security, messaging, cloud-native patterns, and AI integrations. Spring Boot enables
-  rapid application development with embedded servers and auto-configuration. Spring is maintained by
-  VMware and hosted under the Spring Projects GitHub organization.
+description: Spring is the leading open-source application framework for Java. The Spring ecosystem provides a comprehensive
+  programming and configuration model for modern Java-based enterprise applications, covering web MVC, data access,
+  security, messaging, cloud-native patterns, and AI integrations. Spring Boot enables rapid application development
+  with embedded servers and auto-configuration. Spring is maintained by VMware and hosted under the Spring Projects
+  GitHub organization.
 deliveryModel:
   model: unknown
   open_source: false
@@ -24,11 +24,12 @@ accessModel:
   try_now: true
   public: false
   label: Freemium · Self-serve signup
-  confidence: high
+  confidence: medium
   source:
   - plans
   - authentication
-  generated: '2026-07-22'
+  - security
+  generated: '2026-09-03'
   method: derived
 image: ''
 url: https://spring.io
@@ -36,11 +37,10 @@ created: '2026-05-02'
 modified: '2026-08-08'
 apis:
 - name: Spring Data REST API
-  description: >-
-    Spring Data REST automatically exports Spring Data repository interfaces as RESTful hypermedia-driven
-    APIs using HAL (Hypertext Application Language). It enables CRUD operations on domain entities through
-    discoverable REST endpoints without writing controller code. The API supports HATEOAS linking, projections,
-    validation, and event hooks.
+  description: Spring Data REST automatically exports Spring Data repository interfaces as RESTful hypermedia-driven
+    APIs using HAL (Hypertext Application Language). It enables CRUD operations on domain entities through discoverable
+    REST endpoints without writing controller code. The API supports HATEOAS linking, projections, validation, and
+    event hooks.
   humanUrl: https://spring.io/projects/spring-data-rest
   baseUrl: https://api.spring.io/data/rest
   tags:
@@ -59,11 +59,9 @@ apis:
   - type: HALBrowser
     url: https://docs.spring.io/spring-data/rest/docs/current/reference/html/#tools.hal-explorer
 - name: Spring Cloud Gateway API
-  description: >-
-    Spring Cloud Gateway provides an API Gateway built on Spring WebFlux and Reactor. It offers route
-    configuration, request/response filtering, load balancing, circuit breaking, rate limiting, and retry
-    capabilities via a fluent Java DSL or YAML configuration. The Actuator endpoint exposes live route
-    and filter information.
+  description: Spring Cloud Gateway provides an API Gateway built on Spring WebFlux and Reactor. It offers route
+    configuration, request/response filtering, load balancing, circuit breaking, rate limiting, and retry capabilities
+    via a fluent Java DSL or YAML configuration. The Actuator endpoint exposes live route and filter information.
   humanUrl: https://spring.io/projects/spring-cloud-gateway
   baseUrl: https://api.spring.io/gateway
   tags:
@@ -78,13 +76,11 @@ apis:
   - type: GitHub
     url: https://github.com/spring-cloud/spring-cloud-gateway
   - type: Examples
-    url: >-
-      https://github.com/spring-cloud/spring-cloud-gateway/tree/main/spring-cloud-gateway-sample
+    url: https://github.com/spring-cloud/spring-cloud-gateway/tree/main/spring-cloud-gateway-sample
 - name: Spring Authorization Server API
-  description: >-
-    Spring Authorization Server provides a full OAuth 2.1 and OpenID Connect 1.0 authorization server
-    implementation built on Spring Security. It supports authorization code flow, client credentials,
-    device authorization, token introspection, and token revocation. Exposes standard OAuth 2 endpoints.
+  description: Spring Authorization Server provides a full OAuth 2.1 and OpenID Connect 1.0 authorization server
+    implementation built on Spring Security. It supports authorization code flow, client credentials, device authorization,
+    token introspection, and token revocation. Exposes standard OAuth 2 endpoints.
   humanUrl: https://spring.io/projects/spring-authorization-server
   baseUrl: https://api.spring.io/oauth
   tags:
@@ -105,11 +101,10 @@ apis:
   - type: OAuthGuide
     url: https://spring.io/guides/tutorials/spring-boot-oauth2/
 - name: Spring AI API
-  description: >-
-    Spring AI provides a Spring-friendly API and abstractions for building AI-powered applications. It
-    offers a unified ChatClient API for interacting with AI models (OpenAI, Anthropic, Google Gemini,
-    Ollama, and others), along with vector store integrations, prompt templates, output parsers, and function
-    calling support. Follows portable, modular Spring design principles.
+  description: Spring AI provides a Spring-friendly API and abstractions for building AI-powered applications. It
+    offers a unified ChatClient API for interacting with AI models (OpenAI, Anthropic, Google Gemini, Ollama, and
+    others), along with vector store integrations, prompt templates, output parsers, and function calling support.
+    Follows portable, modular Spring design principles.
   humanUrl: https://spring.io/projects/spring-ai
   baseUrl: https://api.spring.io/ai
   tags:
@@ -495,6 +490,106 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/spring-routes-api-openapi.yml
+- aid: spring:spring-boot-actuator
+  name: Spring Boot Actuator API
+  description: Production-ready features for monitoring and managing Spring Boot applications. Exposes health checks,
+    metrics, environment info, configuration properties, thread dumps, heap dumps, and logger configuration via
+    HTTP endpoints.
+  image: https://spring.io/img/spring-logo.svg
+  humanURL: https://docs.spring.io/spring-boot/docs/current/reference/html/actuator.html
+  baseURL: http://localhost:8080/actuator
+  tags:
+  - Health
+  - Management
+  - Metrics
+  - Monitoring
+  properties:
+  - type: Documentation
+    url: https://docs.spring.io/spring-boot/docs/current/actuator-api/htmlsingle/
+  - type: Reference
+    url: https://docs.spring.io/spring-boot/docs/current/reference/html/actuator.html
+- aid: spring:spring-mvc
+  name: Spring MVC Web Framework
+  description: Model-View-Controller web framework built on the Servlet API. Supports annotation-driven controllers,
+    content negotiation, validation, data binding, file uploads, CORS, and exception handling in a flexible servlet
+    container.
+  image: https://spring.io/img/spring-logo.svg
+  humanURL: https://docs.spring.io/spring-framework/docs/current/reference/html/web.html
+  baseURL: http://localhost:8080
+  tags:
+  - Annotations
+  - HTTP
+  - MVC
+  - REST
+  - Web
+  properties:
+  - type: Documentation
+    url: https://docs.spring.io/spring-framework/docs/current/reference/html/web.html
+  - type: APIReference
+    url: https://docs.spring.io/spring-framework/docs/current/javadoc-api/
+  - type: GettingStarted
+    url: https://spring.io/guides/gs/serving-web-content/
+- aid: spring:spring-webflux
+  name: Spring WebFlux Reactive API
+  description: Reactive-stack web framework for building non-blocking, event-driven web applications on top of Project
+    Reactor. Supports annotated controllers and functional endpoints with reactive programming model.
+  image: https://spring.io/img/spring-logo.svg
+  humanURL: https://docs.spring.io/spring-framework/docs/current/reference/html/web-reactive.html
+  baseURL: http://localhost:8080
+  tags:
+  - Non-Blocking
+  - Reactive
+  - Reactor
+  - WebFlux
+  properties:
+  - type: Documentation
+    url: https://docs.spring.io/spring-framework/docs/current/reference/html/web-reactive.html
+  - type: APIReference
+    url: https://docs.spring.io/spring-framework/docs/current/javadoc-api/
+  - type: Guide
+    url: https://spring.io/guides/gs/reactive-rest-service/
+- aid: spring:spring-framework-generation-api
+  name: Spring Framework Generation API
+  description: The Generation API from Spring Framework — 2 operation(s) for generation.
+  humanURL: https://start.spring.io
+  baseURL: https://start.spring.io
+  tags:
+  - Generation
+  properties:
+  - type: OpenAPI
+    url: openapi/spring-framework-generation-api-openapi.yml
+  - type: Documentation
+    url: https://github.com/spring-io/start.spring.io
+  - type: API Endpoint
+    url: https://start.spring.io/
+- aid: spring:spring-framework-management-api
+  name: Spring Framework Management API
+  description: The Management API from Spring Framework — 2 operation(s) for management.
+  humanURL: https://start.spring.io
+  baseURL: https://start.spring.io
+  tags:
+  - Management
+  properties:
+  - type: OpenAPI
+    url: openapi/spring-framework-management-api-openapi.yml
+  - type: Documentation
+    url: https://github.com/spring-io/start.spring.io
+  - type: API Endpoint
+    url: https://start.spring.io/
+- aid: spring:spring-framework-metadata-api
+  name: Spring Framework Metadata API
+  description: The Metadata API from Spring Framework — 2 operation(s) for metadata.
+  humanURL: https://start.spring.io
+  baseURL: https://start.spring.io
+  tags:
+  - Metadata
+  properties:
+  - type: OpenAPI
+    url: openapi/spring-framework-metadata-api-openapi.yml
+  - type: Documentation
+    url: https://github.com/spring-io/start.spring.io
+  - type: API Endpoint
+    url: https://start.spring.io/
 common:
 - type: AgenticAccess
   url: agentic-access/spring-agentic-access.yml
@@ -528,6 +623,10 @@ common:
   url: https://stackoverflow.com/questions/tagged/spring-cloud
 - type: Vocabulary
   url: vocabulary/spring-vocabulary.yml
+- type: Website
+  url: https://spring.io/projects/spring-framework
+- type: Documentation
+  url: https://docs.spring.io/spring-framework/docs/current/reference/html/
 maintainers:
 - name: Spring Team at VMware
   email: spring-team@vmware.com
