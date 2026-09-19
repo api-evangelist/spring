@@ -116,7 +116,7 @@ apis:
   tags:
   - Artificial Intelligence
   - Chatbots
-  - GenAI
+  - Generative AI
   - LLM
   - Machine-Learning
   tags_raw:
@@ -525,6 +525,12 @@ apis:
   humanURL: https://docs.spring.io/spring-framework/docs/current/reference/html/web.html
   baseURL: http://localhost:8080
   tags:
+  - Annotation
+  - HTTP
+  - MVC
+  - REST
+  - Web
+  tags_raw:
   - Annotations
   - HTTP
   - MVC
@@ -546,6 +552,11 @@ apis:
   humanURL: https://docs.spring.io/spring-framework/docs/current/reference/html/web-reactive.html
   baseURL: http://localhost:8080
   tags:
+  - Non-Blocking
+  - Reactive
+  - Reactors
+  - WebFlux
+  tags_raw:
   - Non-Blocking
   - Reactive
   - Reactor
@@ -608,8 +619,8 @@ tags:
 - Open-Source
 - REST
 - Spring Boot
-- Spring Framework
 tags_raw:
+- Spring Framework
 - AI
 - Cloud Native
 - Enterprise
