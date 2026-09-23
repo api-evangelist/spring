@@ -1,7 +1,7 @@
 openapi: 3.2.0
 info:
   title: Spring Boot Actuator Health API
-  description: The Spring Boot Actuator API provides production-ready endpoints for monitoring and managing Spring Boot applications. It exposes health checks, metrics, environment information, configuration properties, thread dumps, HTTP traces, application info, and shutdown capabilities via RESTful endpoints. The Actuator supports customizable security, endpoint exposure controls, and integration with monitoring systems like Prometheus, Datadog, and CloudWatch. Used by operators and SREs to observe and manage deployed Spring Boot services.
+  description: The Spring Boot Actuator API provides production-ready endpoints for monitoring and managing Spring Boot applications.
   version: 3.x
   contact:
     name: Spring Team
@@ -62,6 +62,22 @@ paths:
                 $ref: '#/components/schemas/ComponentHealthResponse'
 components:
   schemas:
+    ComponentHealthResponse:
+      type: object
+      description: Health status for a single health indicator component
+      properties:
+        status:
+          type: string
+          enum:
+          - UP
+          - DOWN
+          - OUT_OF_SERVICE
+          - UNKNOWN
+          example: UP
+        details:
+          type: object
+          description: Component-specific health details
+          additionalProperties: true
     HealthResponse:
       type: object
       description: Application health status response
@@ -80,22 +96,6 @@ components:
           description: Health details per registered health indicator
           additionalProperties:
             $ref: '#/components/schemas/ComponentHealthResponse'
-    ComponentHealthResponse:
-      type: object
-      description: Health status for a single health indicator component
-      properties:
-        status:
-          type: string
-          enum:
-          - UP
-          - DOWN
-          - OUT_OF_SERVICE
-          - UNKNOWN
-          example: UP
-        details:
-          type: object
-          description: Component-specific health details
-          additionalProperties: true
   securitySchemes:
     basicAuth:
       type: http
