@@ -78,22 +78,6 @@ paths:
           description: Logger level updated
 components:
   schemas:
-    LoggerLevelRequest:
-      type: object
-      properties:
-        configuredLevel:
-          type: string
-          nullable: true
-          enum:
-          - TRACE
-          - DEBUG
-          - INFO
-          - WARN
-          - ERROR
-          - 'OFF'
-          - null
-      required:
-      - configuredLevel
     LoggerResponse:
       type: object
       description: Logger configuration
@@ -136,6 +120,22 @@ components:
           type: object
           additionalProperties:
             $ref: '#/components/schemas/LoggerResponse'
+    LoggerLevelRequest:
+      type: object
+      properties:
+        configuredLevel:
+          type: string
+          nullable: true
+          enum:
+          - TRACE
+          - DEBUG
+          - INFO
+          - WARN
+          - ERROR
+          - 'OFF'
+          - null
+      required:
+      - configuredLevel
   securitySchemes:
     basicAuth:
       type: http

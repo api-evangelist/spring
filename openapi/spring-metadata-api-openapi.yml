@@ -58,6 +58,40 @@ paths:
                 $ref: '#/components/schemas/DependenciesResponse'
 components:
   schemas:
+    MetadataOption:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        default:
+          type: boolean
+    Dependency:
+      type: object
+      properties:
+        id:
+          type: string
+          example: web
+        name:
+          type: string
+          example: Spring Web
+        description:
+          type: string
+          example: Build web, including RESTful, applications using Spring MVC.
+        compatibilityRange:
+          type: string
+          example: '[3.0.0,4.0.0-M1)'
+    DependencyGroup:
+      type: object
+      properties:
+        name:
+          type: string
+          example: Web
+        values:
+          type: array
+          items:
+            $ref: '#/components/schemas/Dependency'
     InitializrMetadata:
       type: object
       description: Full Spring Initializr capabilities metadata
@@ -129,40 +163,6 @@ components:
               type: array
               items:
                 $ref: '#/components/schemas/MetadataOption'
-    Dependency:
-      type: object
-      properties:
-        id:
-          type: string
-          example: web
-        name:
-          type: string
-          example: Spring Web
-        description:
-          type: string
-          example: Build web, including RESTful, applications using Spring MVC.
-        compatibilityRange:
-          type: string
-          example: '[3.0.0,4.0.0-M1)'
-    MetadataOption:
-      type: object
-      properties:
-        id:
-          type: string
-        name:
-          type: string
-        default:
-          type: boolean
-    DependencyGroup:
-      type: object
-      properties:
-        name:
-          type: string
-          example: Web
-        values:
-          type: array
-          items:
-            $ref: '#/components/schemas/Dependency'
     DependenciesResponse:
       type: object
       properties:

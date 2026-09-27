@@ -7,14 +7,22 @@ description: Spring is the leading open-source application framework for Java. T
   GitHub organization.
 deliveryModel:
   model: unknown
-  open_source: false
+  license_evidence:
+    not_product:
+    - spring-cloud/spring-cloud-gateway
+    - spring-io/initializr
+    - spring-projects/spring-ai
+    - spring-projects/spring-authorization-server
+    - spring-projects/spring-boot
+  open_source: unknown
   commercial: false
-  callable_host: false
+  callable_host: true
   label: Delivery model not determined — needs a product licence on record
   confidence: low
   source:
   - openapi
-  generated: '2026-08-28'
+  - repository-not-product
+  generated: '2026-09-25'
   method: derived
 specificationVersion: '0.23'
 accessModel:
@@ -118,13 +126,14 @@ apis:
   - Chatbots
   - Generative AI
   - LLM
-  - Machine-Learning
+  - Machine Learning
   tags_raw:
   - AI
   - Chatbot
   - GenAI
   - LLM
   - Machine Learning
+  - Machine-Learning
   properties:
   - type: Documentation
     url: https://docs.spring.io/spring-ai/reference/
@@ -617,7 +626,7 @@ tags:
 - Framework
 - Java
 - Microservices
-- Open-Source
+- Open Source
 - REST
 - Spring Boot
 tags_raw:
@@ -631,5 +640,6 @@ tags_raw:
 - Open Source
 - REST
 - Spring Boot
+- Open-Source
 x-merged-from:
 - spring-cloud
