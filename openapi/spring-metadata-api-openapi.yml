@@ -67,6 +67,16 @@ components:
           type: string
         default:
           type: boolean
+    DependencyGroup:
+      type: object
+      properties:
+        name:
+          type: string
+          example: Web
+        values:
+          type: array
+          items:
+            $ref: '#/components/schemas/Dependency'
     Dependency:
       type: object
       properties:
@@ -82,16 +92,6 @@ components:
         compatibilityRange:
           type: string
           example: '[3.0.0,4.0.0-M1)'
-    DependencyGroup:
-      type: object
-      properties:
-        name:
-          type: string
-          example: Web
-        values:
-          type: array
-          items:
-            $ref: '#/components/schemas/Dependency'
     InitializrMetadata:
       type: object
       description: Full Spring Initializr capabilities metadata

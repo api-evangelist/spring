@@ -78,6 +78,39 @@ paths:
           description: Logger level updated
 components:
   schemas:
+    LoggerLevelRequest:
+      type: object
+      properties:
+        configuredLevel:
+          type: string
+          nullable: true
+          enum:
+          - TRACE
+          - DEBUG
+          - INFO
+          - WARN
+          - ERROR
+          - 'OFF'
+          - null
+      required:
+      - configuredLevel
+    LoggersResponse:
+      type: object
+      properties:
+        levels:
+          type: array
+          items:
+            type: string
+          example:
+          - TRACE
+          - DEBUG
+          - INFO
+          - WARN
+          - ERROR
+        loggers:
+          type: object
+          additionalProperties:
+            $ref: '#/components/schemas/LoggerResponse'
     LoggerResponse:
       type: object
       description: Logger configuration
@@ -103,39 +136,6 @@ components:
           - WARN
           - ERROR
           example: INFO
-    LoggersResponse:
-      type: object
-      properties:
-        levels:
-          type: array
-          items:
-            type: string
-          example:
-          - TRACE
-          - DEBUG
-          - INFO
-          - WARN
-          - ERROR
-        loggers:
-          type: object
-          additionalProperties:
-            $ref: '#/components/schemas/LoggerResponse'
-    LoggerLevelRequest:
-      type: object
-      properties:
-        configuredLevel:
-          type: string
-          nullable: true
-          enum:
-          - TRACE
-          - DEBUG
-          - INFO
-          - WARN
-          - ERROR
-          - 'OFF'
-          - null
-      required:
-      - configuredLevel
   securitySchemes:
     basicAuth:
       type: http

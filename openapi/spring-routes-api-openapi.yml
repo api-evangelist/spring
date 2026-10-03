@@ -116,6 +116,17 @@ paths:
           description: Routes refreshed
 components:
   schemas:
+    FilterDefinition:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Filter factory name
+        args:
+          type: object
+          additionalProperties:
+            type: string
+          description: Filter arguments
     PredicateDefinition:
       type: object
       properties:
@@ -154,14 +165,3 @@ components:
       - id
       - uri
       - predicates
-    FilterDefinition:
-      type: object
-      properties:
-        name:
-          type: string
-          description: Filter factory name
-        args:
-          type: object
-          additionalProperties:
-            type: string
-          description: Filter arguments
