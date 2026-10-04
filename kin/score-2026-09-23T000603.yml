@@ -1,21 +1,19 @@
-# Kin Score artifact — spring — 2026-08-25T143147
+# Kin Score artifact — spring — 2026-09-23T000603
 # The API Evangelist rating (https://github.com/api-evangelist/kin-score). Generated; do not edit.
 ---
 kin_score:
   slug: spring
-  schema_version: 0.14.0
-  scored_at: '2026-08-25'
-  run_ts: 2026-08-25T143147
-  composite: 42.5
+  schema_version: 0.22.0
+  scored_at: '2026-09-23'
+  run_ts: 2026-09-23T000603
+  composite: 46.2
   band: developing
   facets:
-    discoverability: 63.0
-    contract_quality: 67.5
-    governance: 69.7
-    operational_transparency: 23.7
-    developer_ergonomics: 26.2
-    commercial_clarity: 13.2
+    discoverability: 59.3
+    contract_quality: 71.4
     contract_governance: 69.7
+    operational_transparency: 23.7
+    developer_ergonomics: 45.2
     access_clarity: 13.2
   agent_readiness:
     score: 22.3
@@ -46,4 +44,4 @@ kin_score:
       total: 13
       derived: 0
       coverage: 0.0
-      callable: 0.0
+      callable: 100.0
