@@ -578,6 +578,9 @@ apis:
   - type: Guide
     url: https://spring.io/guides/gs/reactive-rest-service/
 common:
+- type: CapabilityMap
+  url: capabilities/spring-capability-edges.yml
+  name: Spring Framework Business Capability Map
 - type: AgenticAccess
   url: agentic-access/spring-agentic-access.yml
 - type: VulnerabilityDisclosure
