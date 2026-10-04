@@ -94,23 +94,6 @@ components:
           - null
       required:
       - configuredLevel
-    LoggersResponse:
-      type: object
-      properties:
-        levels:
-          type: array
-          items:
-            type: string
-          example:
-          - TRACE
-          - DEBUG
-          - INFO
-          - WARN
-          - ERROR
-        loggers:
-          type: object
-          additionalProperties:
-            $ref: '#/components/schemas/LoggerResponse'
     LoggerResponse:
       type: object
       description: Logger configuration
@@ -136,6 +119,23 @@ components:
           - WARN
           - ERROR
           example: INFO
+    LoggersResponse:
+      type: object
+      properties:
+        levels:
+          type: array
+          items:
+            type: string
+          example:
+          - TRACE
+          - DEBUG
+          - INFO
+          - WARN
+          - ERROR
+        loggers:
+          type: object
+          additionalProperties:
+            $ref: '#/components/schemas/LoggerResponse'
   securitySchemes:
     basicAuth:
       type: http

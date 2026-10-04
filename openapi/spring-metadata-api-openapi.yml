@@ -67,31 +67,16 @@ components:
           type: string
         default:
           type: boolean
-    DependencyGroup:
+    DependenciesResponse:
       type: object
       properties:
-        name:
+        bootVersion:
           type: string
-          example: Web
-        values:
-          type: array
-          items:
+          example: 3.4.5
+        dependencies:
+          type: object
+          additionalProperties:
             $ref: '#/components/schemas/Dependency'
-    Dependency:
-      type: object
-      properties:
-        id:
-          type: string
-          example: web
-        name:
-          type: string
-          example: Spring Web
-        description:
-          type: string
-          example: Build web, including RESTful, applications using Spring MVC.
-        compatibilityRange:
-          type: string
-          example: '[3.0.0,4.0.0-M1)'
     InitializrMetadata:
       type: object
       description: Full Spring Initializr capabilities metadata
@@ -163,16 +148,31 @@ components:
               type: array
               items:
                 $ref: '#/components/schemas/MetadataOption'
-    DependenciesResponse:
+    DependencyGroup:
       type: object
       properties:
-        bootVersion:
+        name:
           type: string
-          example: 3.4.5
-        dependencies:
-          type: object
-          additionalProperties:
+          example: Web
+        values:
+          type: array
+          items:
             $ref: '#/components/schemas/Dependency'
+    Dependency:
+      type: object
+      properties:
+        id:
+          type: string
+          example: web
+        name:
+          type: string
+          example: Spring Web
+        description:
+          type: string
+          example: Build web, including RESTful, applications using Spring MVC.
+        compatibilityRange:
+          type: string
+          example: '[3.0.0,4.0.0-M1)'
 externalDocs:
   description: Spring Initializr Reference Documentation
   url: https://docs.spring.io/initializr/docs/current/reference/html/

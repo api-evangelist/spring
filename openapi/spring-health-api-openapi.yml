@@ -62,6 +62,22 @@ paths:
                 $ref: '#/components/schemas/ComponentHealthResponse'
 components:
   schemas:
+    ComponentHealthResponse:
+      type: object
+      description: Health status for a single health indicator component
+      properties:
+        status:
+          type: string
+          enum:
+          - UP
+          - DOWN
+          - OUT_OF_SERVICE
+          - UNKNOWN
+          example: UP
+        details:
+          type: object
+          description: Component-specific health details
+          additionalProperties: true
     HealthResponse:
       type: object
       description: Application health status response
@@ -80,22 +96,6 @@ components:
           description: Health details per registered health indicator
           additionalProperties:
             $ref: '#/components/schemas/ComponentHealthResponse'
-    ComponentHealthResponse:
-      type: object
-      description: Health status for a single health indicator component
-      properties:
-        status:
-          type: string
-          enum:
-          - UP
-          - DOWN
-          - OUT_OF_SERVICE
-          - UNKNOWN
-          example: UP
-        details:
-          type: object
-          description: Component-specific health details
-          additionalProperties: true
   securitySchemes:
     basicAuth:
       type: http

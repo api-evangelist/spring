@@ -75,81 +75,6 @@ paths:
                 format: binary
 components:
   parameters:
-    packageName:
-      name: packageName
-      in: query
-      required: false
-      description: Root Java package name
-      schema:
-        type: string
-        default: com.example.demo
-    name:
-      name: name
-      in: query
-      required: false
-      description: Project name
-      schema:
-        type: string
-        default: demo
-    javaVersion:
-      name: javaVersion
-      in: query
-      required: false
-      description: Java version
-      schema:
-        type: string
-        enum:
-        - '21'
-        - '17'
-        - '11'
-        default: '21'
-    language:
-      name: language
-      in: query
-      required: false
-      description: Programming language
-      schema:
-        type: string
-        enum:
-        - java
-        - kotlin
-        - groovy
-        default: java
-    packaging:
-      name: packaging
-      in: query
-      required: false
-      description: Packaging type
-      schema:
-        type: string
-        enum:
-        - jar
-        - war
-        default: jar
-    artifactId:
-      name: artifactId
-      in: query
-      required: false
-      description: Maven artifact ID / project name
-      schema:
-        type: string
-        default: demo
-    description:
-      name: description
-      in: query
-      required: false
-      description: Project description
-      schema:
-        type: string
-        default: Demo project for Spring Boot
-    baseDir:
-      name: baseDir
-      in: query
-      required: false
-      description: Base directory for the generated project archive
-      schema:
-        type: string
-      example: demo
     dependencies:
       name: dependencies
       in: query
@@ -158,6 +83,14 @@ components:
       schema:
         type: string
       example: web,data-jpa,security,actuator,lombok
+    name:
+      name: name
+      in: query
+      required: false
+      description: Project name
+      schema:
+        type: string
+        default: demo
     bootVersion:
       name: bootVersion
       in: query
@@ -178,6 +111,14 @@ components:
         - gradle-project
         - gradle-project-kotlin
         default: maven-project
+    baseDir:
+      name: baseDir
+      in: query
+      required: false
+      description: Base directory for the generated project archive
+      schema:
+        type: string
+      example: demo
     groupId:
       name: groupId
       in: query
@@ -186,6 +127,65 @@ components:
       schema:
         type: string
         default: com.example
+    packageName:
+      name: packageName
+      in: query
+      required: false
+      description: Root Java package name
+      schema:
+        type: string
+        default: com.example.demo
+    description:
+      name: description
+      in: query
+      required: false
+      description: Project description
+      schema:
+        type: string
+        default: Demo project for Spring Boot
+    artifactId:
+      name: artifactId
+      in: query
+      required: false
+      description: Maven artifact ID / project name
+      schema:
+        type: string
+        default: demo
+    language:
+      name: language
+      in: query
+      required: false
+      description: Programming language
+      schema:
+        type: string
+        enum:
+        - java
+        - kotlin
+        - groovy
+        default: java
+    javaVersion:
+      name: javaVersion
+      in: query
+      required: false
+      description: Java version
+      schema:
+        type: string
+        enum:
+        - '21'
+        - '17'
+        - '11'
+        default: '21'
+    packaging:
+      name: packaging
+      in: query
+      required: false
+      description: Packaging type
+      schema:
+        type: string
+        enum:
+        - jar
+        - war
+        default: jar
 externalDocs:
   description: Spring Initializr Reference Documentation
   url: https://docs.spring.io/initializr/docs/current/reference/html/
