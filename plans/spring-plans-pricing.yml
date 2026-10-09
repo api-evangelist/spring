@@ -79,3 +79,29 @@ maintainers:
   - name: VMware Tanzu (Broadcom)
     email: spring-team@vmware.com
     url: https://spring.io/team
+x-canonical:
+  generated: '2026-10-08'
+  vocabulary: all/0-working/economics/plans-canonical.yml
+  models:
+  - seat
+  - subscription
+  units:
+  - negotiated
+  - seat
+  plans:
+  - name: Open Source
+    access: freemium
+    model: seat
+    model_how: derived
+    units:
+    - seat
+    periods:
+    - per-use
+  - name: Tanzu Spring (Enterprise Support)
+    access: enterprise
+    model: subscription
+    model_how: derived
+    units:
+    - negotiated
+    periods:
+    - year
