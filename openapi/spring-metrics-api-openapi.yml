@@ -63,6 +63,19 @@ paths:
                 $ref: '#/components/schemas/MetricResponse'
 components:
   schemas:
+    MetricNamesResponse:
+      type: object
+      properties:
+        names:
+          type: array
+          description: Available metric names
+          items:
+            type: string
+          example:
+          - jvm.memory.used
+          - jvm.memory.max
+          - http.server.requests
+          - process.cpu.usage
     MetricResponse:
       type: object
       description: Metric value response
@@ -102,19 +115,6 @@ components:
                 type: array
                 items:
                   type: string
-    MetricNamesResponse:
-      type: object
-      properties:
-        names:
-          type: array
-          description: Available metric names
-          items:
-            type: string
-          example:
-          - jvm.memory.used
-          - jvm.memory.max
-          - http.server.requests
-          - process.cpu.usage
   securitySchemes:
     basicAuth:
       type: http

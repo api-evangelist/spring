@@ -58,15 +58,16 @@ paths:
                 $ref: '#/components/schemas/DependenciesResponse'
 components:
   schemas:
-    MetadataOption:
+    DependencyGroup:
       type: object
       properties:
-        id:
-          type: string
         name:
           type: string
-        default:
-          type: boolean
+          example: Web
+        values:
+          type: array
+          items:
+            $ref: '#/components/schemas/Dependency'
     DependenciesResponse:
       type: object
       properties:
@@ -77,6 +78,15 @@ components:
           type: object
           additionalProperties:
             $ref: '#/components/schemas/Dependency'
+    MetadataOption:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        default:
+          type: boolean
     InitializrMetadata:
       type: object
       description: Full Spring Initializr capabilities metadata
@@ -148,16 +158,6 @@ components:
               type: array
               items:
                 $ref: '#/components/schemas/MetadataOption'
-    DependencyGroup:
-      type: object
-      properties:
-        name:
-          type: string
-          example: Web
-        values:
-          type: array
-          items:
-            $ref: '#/components/schemas/Dependency'
     Dependency:
       type: object
       properties:

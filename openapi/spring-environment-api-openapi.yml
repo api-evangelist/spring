@@ -56,6 +56,21 @@ paths:
                 $ref: '#/components/schemas/EnvironmentPropertyResponse'
 components:
   schemas:
+    EnvironmentPropertyResponse:
+      type: object
+      description: Single environment property
+      properties:
+        property:
+          type: object
+          properties:
+            source:
+              type: string
+            value:
+              type: string
+        activeContexts:
+          type: array
+          items:
+            type: string
     EnvironmentResponse:
       type: object
       description: Application environment snapshot
@@ -76,21 +91,6 @@ components:
               properties:
                 type: object
                 additionalProperties: true
-    EnvironmentPropertyResponse:
-      type: object
-      description: Single environment property
-      properties:
-        property:
-          type: object
-          properties:
-            source:
-              type: string
-            value:
-              type: string
-        activeContexts:
-          type: array
-          items:
-            type: string
   securitySchemes:
     basicAuth:
       type: http
