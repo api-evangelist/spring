@@ -39,3 +39,32 @@
     detected: '2026-10-19'
   status: not-a-workflow
   arazzo: null
+- slug: spring-graphql-org-tools-and-libraries
+  label: GraphQL.org tools and libraries
+  partner_name: GraphQL.org tools and libraries
+  category: GraphQL tooling listing
+  type: register
+  channel: standard-directory
+  evidence: https://graphql.org/community/tools-and-libraries/
+  source: edge
+  relationship: standard-participant
+  contract_reference:
+    register: GraphQL.org tools and libraries (graphql.org/community/tools-and-libraries; github.com/graphql/graphql.github.io
+      src/code)
+    standard: GraphQL
+    spec_file: null
+    role: graphql-org-listed-vendor
+    registered_name: Spring for GraphQL
+    register_id: src/code/language-support/java-kotlin-android/server/spring-graphql.md
+    matched_domain: spring.io
+    matched_by: domain+name-among-holders
+    listed_products:
+    - product_type: java-kotlin-android server
+      entries:
+      - Spring for GraphQL
+    signal_note: 'participation only: a reviewed listing on graphql.org, not a conformance certification; listed
+      products (one per section) are context, never counted'
+    detected_by: sweep-graphql-ecosystem.py
+    detected: '2026-10-21'
+  status: not-a-workflow
+  arazzo: null
